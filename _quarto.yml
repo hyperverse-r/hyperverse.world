@@ -16,8 +16,10 @@ website:
     left:
       - href: ecosystem.qmd
         text: Ecosystem
-      - href: docs.qmd
-        text: Docs
+      - href: why.qmd
+        text: Why
+      - href: getting-started.qmd
+        text: Get started
     right:
       - icon: github
         href: https://github.com/hyperverse-r
@@ -26,5 +28,6 @@ website:
 format:
   html:
     theme: [darkly, styles.scss]
+    highlight-style: dracula
     toc: false
     page-layout: full
