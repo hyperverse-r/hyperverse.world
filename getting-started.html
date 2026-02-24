@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ecosystem – hyperverse</title>
+<title>Get started – hyperverse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -91,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./ecosystem.html" aria-current="page"> 
+    <a class="nav-link" href="./ecosystem.html"> 
 <span class="menu-text">Ecosystem</span></a>
   </li>  
   <li class="nav-item">
@@ -99,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Why</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./getting-started.html"> 
+    <a class="nav-link active" href="./getting-started.html" aria-current="page"> 
 <span class="menu-text">Get started</span></a>
   </li>  
 </ul>
@@ -120,18 +155,36 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-hyperverse" id="toc-what-is-hyperverse" class="nav-link active" data-scroll-target="#what-is-hyperverse">What is hyperverse?</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#how-htmx-works" id="toc-how-htmx-works" class="nav-link" data-scroll-target="#how-htmx-works">How htmx works</a></li>
+  <li><a href="#your-first-htmxr-app" id="toc-your-first-htmxr-app" class="nav-link" data-scroll-target="#your-first-htmxr-app">Your first htmxr app</a>
+  <ul class="collapse">
+  <li><a href="#the-page" id="toc-the-page" class="nav-link" data-scroll-target="#the-page">The page</a></li>
+  <li><a href="#the-fragment-endpoint" id="toc-the-fragment-endpoint" class="nav-link" data-scroll-target="#the-fragment-endpoint">The fragment endpoint</a></li>
+  <li><a href="#the-htmx-connection" id="toc-the-htmx-connection" class="nav-link" data-scroll-target="#the-htmx-connection">The htmx connection</a></li>
+  </ul></li>
+  <li><a href="#anatomy-of-an-htmxr-project" id="toc-anatomy-of-an-htmxr-project" class="nav-link" data-scroll-target="#anatomy-of-an-htmxr-project">Anatomy of an htmxr project</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ecosystem</h1>
+<h1 class="title">Get started</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -143,42 +196,175 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="cell">
-<div class="cell-output-display">
-<div class="packages-grid"><a href="https://hyperverse-r.github.io/htmxr/" class="package-card" target="_blank" rel="noopener">
-    <span class="card-arrow">↗</span>
-    <div class="package-name">htmxr</div>
-    <div class="package-desc">Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.</div>
-    <span class="package-badge badge-cran">CRAN 0.1.1</span>
-  </a>
-<a href="https://github.com/hyperverse-r/htmxr.bootstrap" class="package-card" target="_blank" rel="noopener">
-    <span class="card-arrow">↗</span>
-    <div class="package-name">htmxr.bootstrap</div>
-    <div class="package-desc">Opinionated Bootstrap 5 layer on top of htmxr. Ready-to-use UI components with classes applied automatically.</div>
-    <span class="package-badge badge-dev">In development</span>
-  </a>
-<div class="package-card">
-    
-    <div class="package-name">htmxr.daisy</div>
-    <div class="package-desc">Opinionated DaisyUI layer on top of htmxr. Modern, accessible components with a minimal footprint.</div>
-    <span class="package-badge badge-planned">Planned</span>
-  </div>
-<div class="package-card">
-    
-    <div class="package-name">alpiner</div>
-    <div class="package-desc">Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem.</div>
-    <span class="package-badge badge-planned">Planned</span>
-  </div>
-<div class="package-card">
-    
-    <div class="package-name">supar</div>
-    <div class="package-desc">Supabase client for R — query your database over HTTP without writing SQL.</div>
-    <span class="package-badge badge-planned">Planned</span>
-  </div></div>
-</div>
-</div>
+<section id="what-is-hyperverse" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-hyperverse">What is hyperverse?</h2>
+<p><a href="https://htmx.org">htmx</a> is a lightweight JavaScript library (~16kb) that lets any HTML element send HTTP requests — not just <code>&lt;a&gt;</code> and <code>&lt;form&gt;</code> tags.</p>
+<p>The core philosophy is <strong>HTML over the wire</strong>: your server returns HTML fragments, not JSON. The browser swaps those fragments directly into the page without a full reload.</p>
+<p><strong>htmxr</strong> is the R wrapper: it provides <code>htmltools</code>-based primitives to generate htmx attributes and build complete pages, backed by a <a href="https://plumber2.posit.co/">plumber2</a> server.</p>
+<hr>
+</section>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"htmxr"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># development version</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">"hyperverse-r/htmxr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>htmxr uses <a href="https://plumber2.posit.co/">plumber2</a> as its HTTP server — make sure it is installed alongside htmxr.</p>
+<hr>
+</section>
+<section id="how-htmx-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-htmx-works">How htmx works</h2>
+<p>Every htmx interaction follows the same four-step cycle:</p>
+<ol type="1">
+<li><strong>User triggers an event</strong> — a click, an input change, a page load, a form submission…</li>
+<li><strong>htmx sends an HTTP request</strong> to your server (GET or POST)</li>
+<li><strong>Your server returns an HTML fragment</strong> — a snippet of HTML, not JSON</li>
+<li><strong>htmx swaps the fragment</strong> into the targeted DOM element</li>
+</ol>
+<p>You control this cycle through five core attributes:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 40%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>htmxr parameter</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>hx-get</code></td>
+<td><code>get = "/url"</code></td>
+<td>Send GET request on trigger</td>
+</tr>
+<tr class="even">
+<td><code>hx-post</code></td>
+<td><code>post = "/url"</code></td>
+<td>Send POST request on trigger</td>
+</tr>
+<tr class="odd">
+<td><code>hx-target</code></td>
+<td><code>target = "#id"</code></td>
+<td>CSS selector of the element to update</td>
+</tr>
+<tr class="even">
+<td><code>hx-swap</code></td>
+<td><code>swap = "innerHTML"</code></td>
+<td>How to insert the response (<code>innerHTML</code>, <code>outerHTML</code>…)</td>
+</tr>
+<tr class="odd">
+<td><code>hx-trigger</code></td>
+<td><code>trigger = "click"</code></td>
+<td>What triggers the request (<code>click</code>, <code>change</code>, <code>load</code>…)</td>
+</tr>
+</tbody>
+</table>
+<p>In htmxr, these map directly to function parameters — no JavaScript to write.</p>
+<hr>
+</section>
+<section id="your-first-htmxr-app" class="level2">
+<h2 class="anchored" data-anchor-id="your-first-htmxr-app">Your first htmxr app</h2>
+<p>The fastest way to see htmxr in action is to run the built-in <code>hello</code> example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(htmxr)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hx_run_example</span>(<span class="st">"hello"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This launches an Old Faithful histogram where a slider controls the number of bins. Let’s walk through how it works.</p>
+<section id="the-page" class="level3">
+<h3 class="anchored" data-anchor-id="the-page">The page</h3>
+<p>The page is served by a <code>GET /</code> route. <code>hx_page()</code> wraps the full HTML document and injects the htmx script automatically. <code>hx_head()</code> handles the <code>&lt;head&gt;</code> tag.</p>
+<p>The slider is built with <code>hx_slider_input()</code>. Three htmx parameters connect it to the server:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hx_slider_input</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"bins"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="st">"Number of bins:"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="dv">30</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">min =</span> <span class="dv">1</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">max =</span> <span class="dv">50</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">get =</span> <span class="st">"/plot"</span>,                         <span class="co"># send GET /plot on trigger</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">trigger =</span> <span class="st">"input changed delay:300ms"</span>, <span class="co"># trigger: input event, debounced 300ms</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">target =</span> <span class="st">"#plot"</span>                       <span class="co"># replace the content of #plot</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The plot container is a plain <code>&lt;div&gt;</code> with an <code>id</code>. <code>hx_set()</code> adds htmx attributes to it so the plot loads immediately on page load:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tags<span class="sc">$</span><span class="fu">div</span>(<span class="at">id =</span> <span class="st">"plot"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hx_set</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">get =</span> <span class="st">"/plot"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">trigger =</span> <span class="st">"load"</span>,       <span class="co"># fires once when the element is loaded</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">target =</span> <span class="st">"#plot"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">swap =</span> <span class="st">"innerHTML"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="the-fragment-endpoint" class="level3">
+<h3 class="anchored" data-anchor-id="the-fragment-endpoint">The fragment endpoint</h3>
+<p>The <code>/plot</code> route returns an SVG string — an HTML fragment, not a full page:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#* @get /plot</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#* @query bins:integer(30)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#* @parser none</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#* @serializer none</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(query) {</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate_plot</span>(query<span class="sc">$</span>bins)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>When the slider moves, htmxr sends <code>GET /plot?bins=35</code>. The server returns the SVG. htmx swaps it into <code>#plot</code>. No JavaScript, no JSON parsing, no manual DOM manipulation.</p>
+</section>
+<section id="the-htmx-connection" class="level3">
+<h3 class="anchored" data-anchor-id="the-htmx-connection">The htmx connection</h3>
+<pre><code>slider input event
+       │
+       ▼
+GET /plot?bins=35   ──►   server renders SVG
+                                   │
+                    ◄──────────────┘
+          htmx swaps SVG into #plot</code></pre>
+<hr>
+</section>
+</section>
+<section id="anatomy-of-an-htmxr-project" class="level2">
+<h2 class="anchored" data-anchor-id="anatomy-of-an-htmxr-project">Anatomy of an htmxr project</h2>
+<p>A minimal htmxr app needs only two things:</p>
+<p><strong><code>api.R</code></strong> — your plumber2 API with two kinds of routes:</p>
+<ul>
+<li><code>GET /</code> — returns the full page (built with <code>hx_page()</code>)</li>
+<li><code>GET /fragment</code> — returns HTML fragments (one route per dynamic piece)</li>
+</ul>
+<p><strong><code>hx_serve_assets()</code></strong> — registers the htmx JavaScript file as a static asset on your plumber2 router.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(htmxr)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#* @get /</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#* @serializer html</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>() {</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hx_page</span>(</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hx_head</span>(<span class="at">title =</span> <span class="st">"My app"</span>),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    tags<span class="sc">$</span><span class="fu">div</span>(<span class="at">id =</span> <span class="st">"content"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">hx_set</span>(</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">get =</span> <span class="st">"/content"</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">trigger =</span> <span class="st">"load"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">target =</span> <span class="st">"#content"</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#* @get /content</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#* @serializer html</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>() {</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  tags<span class="sc">$</span><span class="fu">p</span>(<span class="st">"Hello from the server!"</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Launch with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pr <span class="ot">&lt;-</span> plumber2<span class="sc">::</span><span class="fu">api</span>(<span class="st">"api.R"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hx_serve_assets</span>()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>pr<span class="sc">$</span><span class="fu">ignite</span>(<span class="at">port =</span> <span class="dv">8080</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
+<p>Explore more built-in examples:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hx_run_example</span>(<span class="st">"select-input"</span>)   <span class="co"># dynamic table filtering</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hx_run_example</span>(<span class="st">"lazy-load"</span>)      <span class="co"># lazy loading pattern</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>When you’re ready to add client-side logic without writing JavaScript, take a look at <a href="https://github.com/hyperverse-r/alpiner">alpiner</a> — the Alpine.js wrapper for the hyperverse ecosystem.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

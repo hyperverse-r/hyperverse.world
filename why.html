@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ecosystem – hyperverse</title>
+<title>Why hyperverse? – hyperverse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -91,11 +91,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./ecosystem.html" aria-current="page"> 
+    <a class="nav-link" href="./ecosystem.html"> 
 <span class="menu-text">Ecosystem</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./why.html"> 
+    <a class="nav-link active" href="./why.html" aria-current="page"> 
 <span class="menu-text">Why</span></a>
   </li>  
   <li class="nav-item">
@@ -120,18 +120,36 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#shiny-the-reference" id="toc-shiny-the-reference" class="nav-link active" data-scroll-target="#shiny-the-reference">Shiny: the reference</a></li>
+  <li><a href="#different-problems-different-trade-offs" id="toc-different-problems-different-trade-offs" class="nav-link" data-scroll-target="#different-problems-different-trade-offs">Different problems, different trade-offs</a></li>
+  <li><a href="#why-choose-hyperverse" id="toc-why-choose-hyperverse" class="nav-link" data-scroll-target="#why-choose-hyperverse">Why choose hyperverse?</a>
+  <ul class="collapse">
+  <li><a href="#surgical-dom-updates" id="toc-surgical-dom-updates" class="nav-link" data-scroll-target="#surgical-dom-updates">Surgical DOM updates</a></li>
+  <li><a href="#scalability-and-infrastructure-cost" id="toc-scalability-and-infrastructure-cost" class="nav-link" data-scroll-target="#scalability-and-infrastructure-cost">Scalability and infrastructure cost</a></li>
+  <li><a href="#native-http-cache-load-balancers-seo" id="toc-native-http-cache-load-balancers-seo" class="nav-link" data-scroll-target="#native-http-cache-load-balancers-seo">Native HTTP: cache, load balancers, SEO</a></li>
+  <li><a href="#interoperability" id="toc-interoperability" class="nav-link" data-scroll-target="#interoperability">Interoperability</a></li>
+  </ul></li>
+  <li><a href="#when-to-use-each" id="toc-when-to-use-each" class="nav-link" data-scroll-target="#when-to-use-each">When to use each</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ecosystem</h1>
+<h1 class="title">Why hyperverse?</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -143,42 +161,125 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="cell">
-<div class="cell-output-display">
-<div class="packages-grid"><a href="https://hyperverse-r.github.io/htmxr/" class="package-card" target="_blank" rel="noopener">
-    <span class="card-arrow">↗</span>
-    <div class="package-name">htmxr</div>
-    <div class="package-desc">Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.</div>
-    <span class="package-badge badge-cran">CRAN 0.1.1</span>
-  </a>
-<a href="https://github.com/hyperverse-r/htmxr.bootstrap" class="package-card" target="_blank" rel="noopener">
-    <span class="card-arrow">↗</span>
-    <div class="package-name">htmxr.bootstrap</div>
-    <div class="package-desc">Opinionated Bootstrap 5 layer on top of htmxr. Ready-to-use UI components with classes applied automatically.</div>
-    <span class="package-badge badge-dev">In development</span>
-  </a>
-<div class="package-card">
-    
-    <div class="package-name">htmxr.daisy</div>
-    <div class="package-desc">Opinionated DaisyUI layer on top of htmxr. Modern, accessible components with a minimal footprint.</div>
-    <span class="package-badge badge-planned">Planned</span>
-  </div>
-<div class="package-card">
-    
-    <div class="package-name">alpiner</div>
-    <div class="package-desc">Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem.</div>
-    <span class="package-badge badge-planned">Planned</span>
-  </div>
-<div class="package-card">
-    
-    <div class="package-name">supar</div>
-    <div class="package-desc">Supabase client for R — query your database over HTTP without writing SQL.</div>
-    <span class="package-badge badge-planned">Planned</span>
-  </div></div>
-</div>
-</div>
+<blockquote class="blockquote">
+<p><em>hyperverse does not replace Shiny — it answers different questions.</em></p>
+</blockquote>
+<hr>
+<section id="shiny-the-reference" class="level2">
+<h2 class="anchored" data-anchor-id="shiny-the-reference">Shiny: the reference</h2>
+<p>Before explaining what hyperverse is, it is worth appreciating what Shiny achieved.</p>
+<p>Shiny democratized web application development for R users. It handles the browser-to-R communication invisibly, so data scientists can focus entirely on their analysis rather than web infrastructure. What Shiny does remarkably well:</p>
+<ul>
+<li><strong>Reactive programming</strong> — outputs update automatically when inputs change, through a dependency graph that Shiny manages for you</li>
+<li><strong>R ↔︎ UI integration</strong> — widgets, interactive plots, tables — everything lives in R</li>
+<li><strong>Rapid prototyping</strong> — a few lines of code give you a working app</li>
+<li><strong>Ecosystem depth</strong> — hundreds of packages (<code>shinydashboard</code>, <code>bslib</code>, <code>DT</code>, <code>plotly</code>…) built specifically for Shiny</li>
+</ul>
+<p>Shiny is the right tool for rich analytical dashboards, scientific interfaces, and internal data exploration tools.</p>
+<hr>
+</section>
+<section id="different-problems-different-trade-offs" class="level2">
+<h2 class="anchored" data-anchor-id="different-problems-different-trade-offs">Different problems, different trade-offs</h2>
+<p>Shiny and hyperverse are built on fundamentally different communication models:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Shiny</th>
+<th>hyperverse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Communication</td>
+<td>WebSocket (persistent connection)</td>
+<td>HTTP (request/response)</td>
+</tr>
+<tr class="even">
+<td>Paradigm</td>
+<td>Reactive graph</td>
+<td>Explicit HTTP requests</td>
+</tr>
+<tr class="odd">
+<td>UI updates</td>
+<td>Shiny decides what to reload</td>
+<td>You target the DOM precisely</td>
+</tr>
+<tr class="even">
+<td>State</td>
+<td>R session per user</td>
+<td>Database or URL</td>
+</tr>
+<tr class="odd">
+<td>Backend</td>
+<td>R only</td>
+<td>Any HTTP server</td>
+</tr>
+</tbody>
+</table>
+<p>The practical difference: <strong>in Shiny, your server reacts. In hyperverse, your browser asks.</strong></p>
+<p>Shiny maintains one R session per connected user. That session holds all the reactive state — inputs, outputs, intermediate computations — and Shiny decides when to re-evaluate which outputs. This model is powerful and ergonomic, but it means each user consumes a persistent R process.</p>
+<p>hyperverse apps are largely stateless. Each HTTP request is independent. The server computes something, returns an HTML fragment, and forgets. State lives in the database, the URL, or the client — not in a long-lived R session.</p>
+<hr>
+</section>
+<section id="why-choose-hyperverse" class="level2">
+<h2 class="anchored" data-anchor-id="why-choose-hyperverse">Why choose hyperverse?</h2>
+<section id="surgical-dom-updates" class="level3">
+<h3 class="anchored" data-anchor-id="surgical-dom-updates">Surgical DOM updates</h3>
+<p>Shiny reloads entire output blocks (<code>uiOutput</code>, <code>renderUI</code>) — sometimes more than strictly necessary. htmx updates <strong>exactly</strong> the targeted element, nothing more. The result is smoother interfaces, less visual flicker, and a faster perceived experience.</p>
+</section>
+<section id="scalability-and-infrastructure-cost" class="level3">
+<h3 class="anchored" data-anchor-id="scalability-and-infrastructure-cost">Scalability and infrastructure cost</h3>
+<p>Shiny’s persistent session model means memory consumption scales linearly with the number of connected users. A pool of shared plumber2 workers handles far more concurrent users on the same hardware.</p>
+<p>Deployment is standard: nginx, Docker, any VPS, any cloud platform. No Shiny Server license required.</p>
+</section>
+<section id="native-http-cache-load-balancers-seo" class="level3">
+<h3 class="anchored" data-anchor-id="native-http-cache-load-balancers-seo">Native HTTP: cache, load balancers, SEO</h3>
+<p>hyperverse responses are plain HTML. This means:</p>
+<ul>
+<li><strong>HTTP caching</strong> — identical requests can be served instantly from a cache layer</li>
+<li><strong>Horizontal load balancing</strong> — no sticky sessions to manage, any worker can handle any request</li>
+<li><strong>Search engine indexability</strong> — content lives in the HTML, not generated client-side by JavaScript</li>
+</ul>
+</section>
+<section id="interoperability" class="level3">
+<h3 class="anchored" data-anchor-id="interoperability">Interoperability</h3>
+<p>hyperverse generates standard HTML backed by a standard HTTP API. The same plumber2 endpoints that serve your frontend can be consumed by mobile apps, other services, or scripts in any language — without translation or adaptation.</p>
+<p><strong>This is particularly valuable when a proof-of-concept built in R needs to grow into a production system: the business logic stays in R, while other parts of the stack can call the same endpoints.</strong></p>
+<hr>
+</section>
+</section>
+<section id="when-to-use-each" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-use-each">When to use each</h2>
+<p><strong>Choose hyperverse when:</strong></p>
+<ul>
+<li>Public-facing apps with many concurrent users</li>
+<li>Forms, CRUD interfaces, admin panels</li>
+<li>SEO and indexability matter</li>
+<li>Standard deployment (Docker, VPS, cloud)</li>
+<li>You want to expose R logic to other services without rewriting it</li>
+</ul>
+<p><strong>Choose Shiny when:</strong></p>
+<ul>
+<li>Rich analytical dashboards and scientific interfaces</li>
+<li>Complex reactive logic with many interdependent outputs</li>
+<li>Rapid prototyping for internal data exploration</li>
+<li>Deep Shiny ecosystem integration (<code>DT</code>, <code>plotly</code>, <code>bslib</code>…)</li>
+<li>You want R to own the full stack (no HTTP API needed)</li>
+</ul>
+<hr>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>hyperverse is not a Shiny replacement. It is a different tool for different problems. If you need reactive, session-based dashboards in R, Shiny is the right choice. If you need scalable, HTTP-native apps that interoperate beyond R, hyperverse is the answer.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -2,14 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hyperverse.world/docs.html</loc>
-    <lastmod>2026-02-24T10:09:03.944Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hyperverse.world/index.html</loc>
-    <lastmod>2026-02-24T10:09:03.945Z</lastmod>
+    <lastmod>2026-02-24T13:07:41.966Z</lastmod>
   </url>
   <url>
     <loc>https://hyperverse.world/ecosystem.html</loc>
-    <lastmod>2026-02-24T10:09:03.945Z</lastmod>
+    <lastmod>2026-02-24T13:07:41.966Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hyperverse.world/index.html</loc>
+    <lastmod>2026-02-24T13:07:41.967Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hyperverse.world/why.html</loc>
+    <lastmod>2026-02-24T13:07:41.967Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hyperverse.world/getting-started.html</loc>
+    <lastmod>2026-02-24T13:07:41.967Z</lastmod>
   </url>
 </urlset>
