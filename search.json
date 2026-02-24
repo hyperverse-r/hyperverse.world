@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "docs.html",
+    "href": "docs.html",
+    "title": "Docs",
+    "section": "",
+    "text": "Coming soon."
+  },
+  {
+    "objectID": "notes-js-canvas.html",
+    "href": "notes-js-canvas.html",
+    "title": "Comprendre le code JS — orbites & particules",
+    "section": "",
+    "text": "&lt;canvas&gt; est un élément HTML qui fonctionne comme une feuille blanche. On y dessine via JavaScript avec un “contexte 2D” (ctx). À chaque frame, on efface tout et on redessine — c’est le principe de l’animation.\nconst canvas = document.getElementById(\"hero-canvas\");\nconst ctx    = canvas.getContext(\"2d\");\n\nctx.clearRect(0, 0, canvas.width, canvas.height); // efface tout\nctx.beginPath();                                   // commence un tracé\nctx.arc(x, y, rayon, 0, Math.PI * 2);             // dessine un cercle\nctx.fill();                                        // remplit\nrequestAnimationFrame(draw) dit au navigateur : “rappelle-moi la fonction draw au prochain rafraîchissement d’écran” (~60 fois par seconde). C’est la boucle d’animation.\n\n\n\n\nChaque particule est un objet avec une position (x, y), un rayon r, une vitesse et une opacité :\n{ x: 120, y: 340, r: 1.2, speed: 0.2, opacity: 0.3 }\nÀ chaque frame, on décrémente y (monte vers le haut) :\np.y -= p.speed;\nQuand la particule sort par le haut (y &lt; -4), on la remet en bas à une position x aléatoire — ça donne l’illusion de particules infinies.\n\n\n\n\nC’est là que la trigonométrie entre en jeu. Un point qui tourne en cercle autour d’un centre (cx, cy) à un rayon r et un angle θ a pour coordonnées :\nx = cx + cos(θ) × r\ny = cy + sin(θ) × r\nC’est la conversion polaire → cartésien : on décrit la position par un angle et une distance, et on convertit en (x, y) pour le canvas.\nconst x = cx() + Math.cos(o.angle) * o.radius;\nconst y = cy() + Math.sin(o.angle) * o.radius;\nÀ chaque frame, on incrémente l’angle :\no.angle += o.speed; // speed = vitesse angulaire, ex: 0.004 radians/frame\nUn cercle complet = 2π radians ≈ 6.28. Avec speed = 0.004, un tour complet prend : 6.28 / 0.004 = 1570 frames ≈ 26 secondes à 60fps.\nLes orbites sont initialisées avec des angles différents (0, Math.PI, Math.PI/2…) pour que les points soient répartis sur le cercle dès le départ.\n\n\n\n\nCe sont juste des cercles tracés sans remplissage (stroke au lieu de fill) pour visualiser la trajectoire :\nctx.arc(cx(), cy(), o.radius, 0, Math.PI * 2);\nctx.strokeStyle = `rgba(160, 160, 255, 0.06)`; // très transparent\nctx.stroke();\n\n\n\n\n          particule ↑\n             .\n\n\n  . ←——— orbit trail ———→ .\n         ↑\n      dot orbitant (position = centre + cos/sin × rayon)"
+  },
+  {
+    "objectID": "notes-js-canvas.html#le-canvas",
+    "href": "notes-js-canvas.html#le-canvas",
+    "title": "Comprendre le code JS — orbites & particules",
+    "section": "",
+    "text": "&lt;canvas&gt; est un élément HTML qui fonctionne comme une feuille blanche. On y dessine via JavaScript avec un “contexte 2D” (ctx). À chaque frame, on efface tout et on redessine — c’est le principe de l’animation.\nconst canvas = document.getElementById(\"hero-canvas\");\nconst ctx    = canvas.getContext(\"2d\");\n\nctx.clearRect(0, 0, canvas.width, canvas.height); // efface tout\nctx.beginPath();                                   // commence un tracé\nctx.arc(x, y, rayon, 0, Math.PI * 2);             // dessine un cercle\nctx.fill();                                        // remplit\nrequestAnimationFrame(draw) dit au navigateur : “rappelle-moi la fonction draw au prochain rafraîchissement d’écran” (~60 fois par seconde). C’est la boucle d’animation."
+  },
+  {
+    "objectID": "notes-js-canvas.html#les-particules-flottantes",
+    "href": "notes-js-canvas.html#les-particules-flottantes",
+    "title": "Comprendre le code JS — orbites & particules",
+    "section": "",
+    "text": "Chaque particule est un objet avec une position (x, y), un rayon r, une vitesse et une opacité :\n{ x: 120, y: 340, r: 1.2, speed: 0.2, opacity: 0.3 }\nÀ chaque frame, on décrémente y (monte vers le haut) :\np.y -= p.speed;\nQuand la particule sort par le haut (y &lt; -4), on la remet en bas à une position x aléatoire — ça donne l’illusion de particules infinies."
+  },
+  {
+    "objectID": "notes-js-canvas.html#les-orbites-la-partie-maths",
+    "href": "notes-js-canvas.html#les-orbites-la-partie-maths",
+    "title": "Comprendre le code JS — orbites & particules",
+    "section": "",
+    "text": "C’est là que la trigonométrie entre en jeu. Un point qui tourne en cercle autour d’un centre (cx, cy) à un rayon r et un angle θ a pour coordonnées :\nx = cx + cos(θ) × r\ny = cy + sin(θ) × r\nC’est la conversion polaire → cartésien : on décrit la position par un angle et une distance, et on convertit en (x, y) pour le canvas.\nconst x = cx() + Math.cos(o.angle) * o.radius;\nconst y = cy() + Math.sin(o.angle) * o.radius;\nÀ chaque frame, on incrémente l’angle :\no.angle += o.speed; // speed = vitesse angulaire, ex: 0.004 radians/frame\nUn cercle complet = 2π radians ≈ 6.28. Avec speed = 0.004, un tour complet prend : 6.28 / 0.004 = 1570 frames ≈ 26 secondes à 60fps.\nLes orbites sont initialisées avec des angles différents (0, Math.PI, Math.PI/2…) pour que les points soient répartis sur le cercle dès le départ."
+  },
+  {
+    "objectID": "notes-js-canvas.html#les-cercles-dorbite-traits",
+    "href": "notes-js-canvas.html#les-cercles-dorbite-traits",
+    "title": "Comprendre le code JS — orbites & particules",
+    "section": "",
+    "text": "Ce sont juste des cercles tracés sans remplissage (stroke au lieu de fill) pour visualiser la trajectoire :\nctx.arc(cx(), cy(), o.radius, 0, Math.PI * 2);\nctx.strokeStyle = `rgba(160, 160, 255, 0.06)`; // très transparent\nctx.stroke();"
+  },
+  {
+    "objectID": "notes-js-canvas.html#résumé-visuel",
+    "href": "notes-js-canvas.html#résumé-visuel",
+    "title": "Comprendre le code JS — orbites & particules",
+    "section": "",
+    "text": "particule ↑\n             .\n\n\n  . ←——— orbit trail ———→ .\n         ↑\n      dot orbitant (position = centre + cos/sin × rayon)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "hyperverse",
+    "section": "",
+    "text": "hyperverse\n\n\nA modular R ecosystem for building modern web applications, the web way.\n\nGet started →\n\n\n\n\n    ↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.1.1\n  \n\n    \n    alpiner\n    Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem.\n    Planned\n  \n\n    \n    supar\n    Supabase client for R — query your database over HTTP without writing SQL.\n    Planned\n  \n    Explore the ecosystem →"
+  },
+  {
+    "objectID": "ecosystem.html",
+    "href": "ecosystem.html",
+    "title": "Ecosystem",
+    "section": "",
+    "text": "↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.1.1\n  \n\n    ↗\n    htmxr.bootstrap\n    Opinionated Bootstrap 5 layer on top of htmxr. Ready-to-use UI components with classes applied automatically.\n    In development\n  \n\n    \n    htmxr.daisy\n    Opinionated DaisyUI layer on top of htmxr. Modern, accessible components with a minimal footprint.\n    Planned\n  \n\n    \n    alpiner\n    Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem.\n    Planned\n  \n\n    \n    supar\n    Supabase client for R — query your database over HTTP without writing SQL.\n    Planned"
+  }
+]
