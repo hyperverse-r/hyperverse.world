@@ -1,0 +1,119 @@
+---
+title: ""
+page-layout: full
+toc: false
+---
+
+```{r}
+#| include: false
+source(here::here("R/packages.R"))
+```
+
+::: {.hero}
+```{=html}
+<canvas id="hero-canvas"></canvas>
+```
+
+::: {.hero-title}
+[hyperverse]{#typewriter-text}
+:::
+
+::: {.lead}
+A modular R ecosystem for building modern web applications, the web way.
+:::
+
+[Get started →](docs.qmd){.btn-cta}
+:::
+
+```{r}
+#| echo: false
+packages_grid_home()
+```
+
+```{=html}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* --- Typewriter --- */
+  const text = "hyperverse";
+  const el = document.getElementById("typewriter-text");
+  el.textContent = "";
+  let i = 0;
+  const type = () => {
+    if (i < text.length) { el.textContent += text[i++]; setTimeout(type, 80); }
+    else el.classList.add("done");
+  };
+  setTimeout(type, 300);
+
+  /* --- Canvas --- */
+  const canvas = document.getElementById("hero-canvas");
+  const ctx    = canvas.getContext("2d");
+
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  const cx = () => canvas.width  / 2;
+  const cy = () => canvas.height / 2;
+
+  /* Floating particles */
+  const particles = Array.from({ length: 60 }, () => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * 500,
+    r: Math.random() * 1.5 + 0.5,
+    speed: Math.random() * 0.3 + 0.1,
+    opacity: Math.random() * 0.4 + 0.1,
+  }));
+
+  /* Orbiting dots */
+  const orbits = [
+    { radius: 140, speed: 0.004,  angle: 0,              dotR: 3,   opacity: 0.7  },
+    { radius: 140, speed: 0.004,  angle: Math.PI,        dotR: 3,   opacity: 0.7  },
+    { radius: 200, speed: 0.0025, angle: Math.PI / 2,    dotR: 2,   opacity: 0.4  },
+    { radius: 200, speed: 0.0025, angle: Math.PI * 1.5,  dotR: 2,   opacity: 0.4  },
+    { radius: 260, speed: 0.0015, angle: Math.PI / 4,    dotR: 1.5, opacity: 0.25 },
+  ];
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    /* Particles */
+    particles.forEach(p => {
+      p.y -= p.speed;
+      if (p.y < -4) { p.y = canvas.height + 4; p.x = Math.random() * canvas.width; }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(180, 180, 255, ${p.opacity})`;
+      ctx.fill();
+    });
+
+    /* Orbit trails */
+    orbits.forEach(o => {
+      ctx.beginPath();
+      ctx.arc(cx(), cy(), o.radius, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(160, 160, 255, 0.06)`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    });
+
+    /* Orbiting dots */
+    orbits.forEach(o => {
+      o.angle += o.speed;
+      const x = cx() + Math.cos(o.angle) * o.radius;
+      const y = cy() + Math.sin(o.angle) * o.radius;
+      ctx.beginPath();
+      ctx.arc(x, y, o.dotR, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(200, 200, 255, ${o.opacity})`;
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+});
+</script>
+```

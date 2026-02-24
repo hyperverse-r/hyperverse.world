@@ -1,0 +1,34 @@
+- name: htmxr
+  desc: "Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript."
+  badge: CRAN 0.1.1
+  badge_class: badge-cran
+  github: https://github.com/hyperverse-r/htmxr
+  pkgdown: https://hyperverse-r.github.io/htmxr/
+
+- name: htmxr.bootstrap
+  desc: "Opinionated Bootstrap 5 layer on top of htmxr. Ready-to-use UI components with classes applied automatically."
+  badge: In development
+  badge_class: badge-dev
+  github: https://github.com/hyperverse-r/htmxr.bootstrap
+  pkgdown: ~
+
+- name: htmxr.daisy
+  desc: "Opinionated DaisyUI layer on top of htmxr. Modern, accessible components with a minimal footprint."
+  badge: Planned
+  badge_class: badge-planned
+  github: ~
+  pkgdown: ~
+
+- name: alpiner
+  desc: "Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem."
+  badge: Planned
+  badge_class: badge-planned
+  github: ~
+  pkgdown: ~
+
+- name: supar
+  desc: "Supabase client for R — query your database over HTTP without writing SQL."
+  badge: Planned
+  badge_class: badge-planned
+  github: ~
+  pkgdown: ~

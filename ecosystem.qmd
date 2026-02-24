@@ -1,0 +1,14 @@
+---
+title: "Ecosystem"
+toc: false
+---
+
+```{r}
+#| include: false
+source(here::here("R/packages.R"))
+```
+
+```{r}
+#| echo: false
+packages_grid()
+```

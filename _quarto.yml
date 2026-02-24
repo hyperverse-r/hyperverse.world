@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "hyperverse"
+  site-url: https://hyperverse.world
+  favicon: assets/hyperverse.svg
+  search: true
+  navbar:
+    background: "#232323"
+    foreground: "#f0f0f0"
+    title: "hyperverse"
+    left:
+      - href: ecosystem.qmd
+        text: Ecosystem
+      - href: docs.qmd
+        text: Docs
+    right:
+      - icon: github
+        href: https://github.com/hyperverse-r
+        aria-label: GitHub
+
+format:
+  html:
+    theme: [darkly, styles.scss]
+    toc: false
+    page-layout: full
