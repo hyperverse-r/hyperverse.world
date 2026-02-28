@@ -7,20 +7,6 @@
     "text": "Coming soon."
   },
   {
-    "objectID": "ecosystem.html",
-    "href": "ecosystem.html",
-    "title": "Ecosystem",
-    "section": "",
-    "text": "↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.1.1\n  \n\n    ↗\n    htmxr.bootstrap\n    Opinionated Bootstrap 5 layer on top of htmxr. Ready-to-use UI components with classes applied automatically.\n    In development\n  \n\n    \n    htmxr.daisy\n    Opinionated DaisyUI layer on top of htmxr. Modern, accessible components with a minimal footprint.\n    Planned\n  \n\n    \n    alpiner\n    Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem.\n    Planned\n  \n\n    \n    supar\n    Supabase client for R — query your database over HTTP without writing SQL.\n    Planned"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "hyperverse",
-    "section": "",
-    "text": "hyperverse\n\n\nA modular R ecosystem for building modern web applications, the web way.\n\nGet started →\n\n\n\n\n    ↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.1.1\n  \n\n    \n    alpiner\n    Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem.\n    Planned\n  \n\n    \n    supar\n    Supabase client for R — query your database over HTTP without writing SQL.\n    Planned\n  \n    Explore the ecosystem →"
-  },
-  {
     "objectID": "why.html",
     "href": "why.html",
     "title": "Why hyperverse?",
@@ -61,6 +47,13 @@
     "title": "Why hyperverse?",
     "section": "Summary",
     "text": "Summary\nhyperverse is not a Shiny replacement. It is a different tool for different problems. If you need reactive, session-based dashboards in R, Shiny is the right choice. If you need scalable, HTTP-native apps that interoperate beyond R, hyperverse is the answer."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "hyperverse",
+    "section": "",
+    "text": "hyperverse\n\n\nA modular R ecosystem for building modern web applications, the web way.\n\nGet started →\n\n\n\n\n    ↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.1.1\n  \n\n    \n    alpiner\n    Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem.\n    Planned\n  \n\n    \n    supar\n    Supabase client for R — query your database over HTTP without writing SQL.\n    Planned\n  \n    Explore the ecosystem →"
   },
   {
     "objectID": "getting-started.html",
@@ -110,5 +103,12 @@
     "title": "Get started",
     "section": "Next steps",
     "text": "Next steps\nExplore more built-in examples:\nhx_run_example(\"select-input\")   # dynamic table filtering\nhx_run_example(\"lazy-load\")      # lazy loading pattern\nWhen you’re ready to add client-side logic without writing JavaScript, take a look at alpiner — the Alpine.js wrapper for the hyperverse ecosystem."
+  },
+  {
+    "objectID": "ecosystem.html",
+    "href": "ecosystem.html",
+    "title": "Ecosystem",
+    "section": "",
+    "text": "↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.1.1\n  \n\n    ↗\n    lucidr\n    Lucide icons for R — embed beautiful and consistent SVG icons inline in any R web application, with no external dependency.\n    In development\n  \n\n    ↗\n    htmxr.bootstrap\n    Opinionated Bootstrap 5 layer on top of htmxr. Ready-to-use UI components with classes applied automatically.\n    In development\n  \n\n    \n    htmxr.daisy\n    Opinionated DaisyUI layer on top of htmxr. Modern, accessible components with a minimal footprint.\n    Planned\n  \n\n    \n    alpiner\n    Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem.\n    Planned\n  \n\n    \n    supar\n    Supabase client for R — query your database over HTTP without writing SQL.\n    Planned"
   }
 ]
