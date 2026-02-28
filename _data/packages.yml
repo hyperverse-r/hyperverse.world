@@ -5,6 +5,13 @@
   github: https://github.com/hyperverse-r/htmxr
   pkgdown: https://hyperverse-r.github.io/htmxr/
 
+- name: lucidr
+  desc: "Lucide icons for R — embed beautiful and consistent SVG icons inline in any R web application, with no external dependency."
+  badge: In development
+  badge_class: badge-dev
+  github: https://github.com/hyperverse-r/lucidr
+  pkgdown: ~
+
 - name: htmxr.bootstrap
   desc: "Opinionated Bootstrap 5 layer on top of htmxr. Ready-to-use UI components with classes applied automatically."
   badge: In development
