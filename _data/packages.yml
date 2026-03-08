@@ -1,6 +1,6 @@
 - name: htmxr
   desc: "Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript."
-  badge: CRAN 0.1.1
+  badge: CRAN 0.2.0
   badge_class: badge-cran
   github: https://github.com/hyperverse-r/htmxr
   pkgdown: https://hyperverse-r.github.io/htmxr/
@@ -39,3 +39,10 @@
   badge_class: badge-planned
   github: ~
   pkgdown: ~
+
+- name: glitchtipr
+  desc: "GlitchTip client for R — error tracking and performance monitoring for your R applications."
+  badge: In development
+  badge_class: badge-dev
+  github: https://github.com/hyperverse-r/glitchtipr
+  pkgdown: https://hyperverse-r.github.io/glitchtipr/
