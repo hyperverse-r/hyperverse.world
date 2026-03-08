@@ -20,6 +20,8 @@ website:
         text: Why
       - href: getting-started.qmd
         text: Get started
+      - href: glitchtipr.qmd
+        text: Monitoring
     right:
       - icon: github
         href: https://github.com/hyperverse-r
