@@ -7,53 +7,11 @@
     "text": "Coming soon."
   },
   {
-    "objectID": "why.html",
-    "href": "why.html",
-    "title": "Why hyperverse?",
+    "objectID": "ecosystem.html",
+    "href": "ecosystem.html",
+    "title": "Ecosystem",
     "section": "",
-    "text": "hyperverse does not replace Shiny — it answers different questions."
-  },
-  {
-    "objectID": "why.html#shiny-the-reference",
-    "href": "why.html#shiny-the-reference",
-    "title": "Why hyperverse?",
-    "section": "Shiny: the reference",
-    "text": "Shiny: the reference\nBefore explaining what hyperverse is, it is worth appreciating what Shiny achieved.\nShiny democratized web application development for R users. It handles the browser-to-R communication invisibly, so data scientists can focus entirely on their analysis rather than web infrastructure. What Shiny does remarkably well:\n\nReactive programming — outputs update automatically when inputs change, through a dependency graph that Shiny manages for you\nR ↔︎ UI integration — widgets, interactive plots, tables — everything lives in R\nRapid prototyping — a few lines of code give you a working app\nEcosystem depth — hundreds of packages (shinydashboard, bslib, DT, plotly…) built specifically for Shiny\n\nShiny is the right tool for rich analytical dashboards, scientific interfaces, and internal data exploration tools."
-  },
-  {
-    "objectID": "why.html#different-problems-different-trade-offs",
-    "href": "why.html#different-problems-different-trade-offs",
-    "title": "Why hyperverse?",
-    "section": "Different problems, different trade-offs",
-    "text": "Different problems, different trade-offs\nShiny and hyperverse are built on fundamentally different communication models:\n\n\n\n\n\n\n\n\n\nShiny\nhyperverse\n\n\n\n\nCommunication\nWebSocket (persistent connection)\nHTTP (request/response)\n\n\nParadigm\nReactive graph\nExplicit HTTP requests\n\n\nUI updates\nShiny decides what to reload\nYou target the DOM precisely\n\n\nState\nR session per user\nDatabase or URL\n\n\nBackend\nR only\nAny HTTP server\n\n\n\nThe practical difference: in Shiny, your server reacts. In hyperverse, your browser asks.\nShiny maintains one R session per connected user. That session holds all the reactive state — inputs, outputs, intermediate computations — and Shiny decides when to re-evaluate which outputs. This model is powerful and ergonomic, but it means each user consumes a persistent R process.\nhyperverse apps are largely stateless. Each HTTP request is independent. The server computes something, returns an HTML fragment, and forgets. State lives in the database, the URL, or the client — not in a long-lived R session."
-  },
-  {
-    "objectID": "why.html#why-choose-hyperverse",
-    "href": "why.html#why-choose-hyperverse",
-    "title": "Why hyperverse?",
-    "section": "Why choose hyperverse?",
-    "text": "Why choose hyperverse?\n\nSurgical DOM updates\nShiny reloads entire output blocks (uiOutput, renderUI) — sometimes more than strictly necessary. htmx updates exactly the targeted element, nothing more. The result is smoother interfaces, less visual flicker, and a faster perceived experience.\n\n\nScalability and infrastructure cost\nShiny’s persistent session model means memory consumption scales linearly with the number of connected users. A pool of shared plumber2 workers handles far more concurrent users on the same hardware.\nDeployment is standard: nginx, Docker, any VPS, any cloud platform. No Shiny Server license required.\n\n\nNative HTTP: cache, load balancers, SEO\nhyperverse responses are plain HTML. This means:\n\nHTTP caching — identical requests can be served instantly from a cache layer\nHorizontal load balancing — no sticky sessions to manage, any worker can handle any request\nSearch engine indexability — content lives in the HTML, not generated client-side by JavaScript\n\n\n\nInteroperability\nhyperverse generates standard HTML backed by a standard HTTP API. The same plumber2 endpoints that serve your frontend can be consumed by mobile apps, other services, or scripts in any language — without translation or adaptation.\nThis is particularly valuable when a proof-of-concept built in R needs to grow into a production system: the business logic stays in R, while other parts of the stack can call the same endpoints."
-  },
-  {
-    "objectID": "why.html#when-to-use-each",
-    "href": "why.html#when-to-use-each",
-    "title": "Why hyperverse?",
-    "section": "When to use each",
-    "text": "When to use each\nChoose hyperverse when:\n\nPublic-facing apps with many concurrent users\nForms, CRUD interfaces, admin panels\nSEO and indexability matter\nStandard deployment (Docker, VPS, cloud)\nYou want to expose R logic to other services without rewriting it\n\nChoose Shiny when:\n\nRich analytical dashboards and scientific interfaces\nComplex reactive logic with many interdependent outputs\nRapid prototyping for internal data exploration\nDeep Shiny ecosystem integration (DT, plotly, bslib…)\nYou want R to own the full stack (no HTTP API needed)"
-  },
-  {
-    "objectID": "why.html#summary",
-    "href": "why.html#summary",
-    "title": "Why hyperverse?",
-    "section": "Summary",
-    "text": "Summary\nhyperverse is not a Shiny replacement. It is a different tool for different problems. If you need reactive, session-based dashboards in R, Shiny is the right choice. If you need scalable, HTTP-native apps that interoperate beyond R, hyperverse is the answer."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "hyperverse",
-    "section": "",
-    "text": "hyperverse\n\n\nA modular R ecosystem for building modern web applications, the web way.\n\nGet started →\n\n\n\n\n    ↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.2.0\n  \n\n    \n    alpiner\n    Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem.\n    Planned\n  \n\n    \n    supar\n    Supabase client for R — query your database over HTTP without writing SQL.\n    Planned\n  \n    Explore the ecosystem →"
+    "text": "↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.2.0\n  \n\n    ↗\n    lucidr\n    Lucide icons for R — embed beautiful and consistent SVG icons inline in any R web application, with no external dependency.\n    CRAN 0.1.0\n  \n\n    ↗\n    htmxr.bootstrap\n    Opinionated Bootstrap 5 layer on top of htmxr. Ready-to-use UI components with classes applied automatically.\n    In development\n  \n\n    \n    htmxr.daisy\n    Opinionated DaisyUI layer on top of htmxr. Modern, accessible components with a minimal footprint.\n    Planned\n  \n\n    \n    alpiner\n    Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem.\n    Planned\n  \n\n    \n    supar\n    Supabase client for R — query your database over HTTP without writing SQL.\n    Planned\n  \n\n    ↗\n    glitchtipr\n    GlitchTip client for R — error tracking and performance monitoring for your R applications.\n    In development"
   },
   {
     "objectID": "getting-started.html",
@@ -105,10 +63,108 @@
     "text": "Next steps\nExplore more built-in examples:\nhx_run_example(\"select-input\")   # dynamic table filtering\nhx_run_example(\"lazy-load\")      # lazy loading pattern\nWhen you’re ready to add client-side logic without writing JavaScript, take a look at alpiner — the Alpine.js wrapper for the hyperverse ecosystem."
   },
   {
-    "objectID": "ecosystem.html",
-    "href": "ecosystem.html",
-    "title": "Ecosystem",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "hyperverse",
     "section": "",
-    "text": "↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.2.0\n  \n\n    ↗\n    lucidr\n    Lucide icons for R — embed beautiful and consistent SVG icons inline in any R web application, with no external dependency.\n    CRAN 0.1.0\n  \n\n    ↗\n    htmxr.bootstrap\n    Opinionated Bootstrap 5 layer on top of htmxr. Ready-to-use UI components with classes applied automatically.\n    In development\n  \n\n    \n    htmxr.daisy\n    Opinionated DaisyUI layer on top of htmxr. Modern, accessible components with a minimal footprint.\n    Planned\n  \n\n    \n    alpiner\n    Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem.\n    Planned\n  \n\n    \n    supar\n    Supabase client for R — query your database over HTTP without writing SQL.\n    Planned\n  \n\n    ↗\n    glitchtipr\n    GlitchTip client for R — error tracking and performance monitoring for your R applications.\n    In development"
+    "text": "hyperverse\n\n\nA modular R ecosystem for building modern web applications, the web way.\n\nGet started →\n\n\n\n\n    ↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.2.0\n  \n\n    \n    alpiner\n    Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem.\n    Planned\n  \n\n    \n    supar\n    Supabase client for R — query your database over HTTP without writing SQL.\n    Planned\n  \n    Explore the ecosystem →"
+  },
+  {
+    "objectID": "why.html",
+    "href": "why.html",
+    "title": "Why hyperverse?",
+    "section": "",
+    "text": "hyperverse does not replace Shiny — it answers different questions."
+  },
+  {
+    "objectID": "why.html#shiny-the-reference",
+    "href": "why.html#shiny-the-reference",
+    "title": "Why hyperverse?",
+    "section": "Shiny: the reference",
+    "text": "Shiny: the reference\nBefore explaining what hyperverse is, it is worth appreciating what Shiny achieved.\nShiny democratized web application development for R users. It handles the browser-to-R communication invisibly, so data scientists can focus entirely on their analysis rather than web infrastructure. What Shiny does remarkably well:\n\nReactive programming — outputs update automatically when inputs change, through a dependency graph that Shiny manages for you\nR ↔︎ UI integration — widgets, interactive plots, tables — everything lives in R\nRapid prototyping — a few lines of code give you a working app\nEcosystem depth — hundreds of packages (shinydashboard, bslib, DT, plotly…) built specifically for Shiny\n\nShiny is the right tool for rich analytical dashboards, scientific interfaces, and internal data exploration tools."
+  },
+  {
+    "objectID": "why.html#different-problems-different-trade-offs",
+    "href": "why.html#different-problems-different-trade-offs",
+    "title": "Why hyperverse?",
+    "section": "Different problems, different trade-offs",
+    "text": "Different problems, different trade-offs\nShiny and hyperverse are built on fundamentally different communication models:\n\n\n\n\n\n\n\n\n\nShiny\nhyperverse\n\n\n\n\nCommunication\nWebSocket (persistent connection)\nHTTP (request/response)\n\n\nParadigm\nReactive graph\nExplicit HTTP requests\n\n\nUI updates\nShiny decides what to reload\nYou target the DOM precisely\n\n\nState\nR session per user\nDatabase or URL\n\n\nBackend\nR only\nAny HTTP server\n\n\n\nThe practical difference: in Shiny, your server reacts. In hyperverse, your browser asks.\nShiny maintains one R session per connected user. That session holds all the reactive state — inputs, outputs, intermediate computations — and Shiny decides when to re-evaluate which outputs. This model is powerful and ergonomic, but it means each user consumes a persistent R process.\nhyperverse apps are largely stateless. Each HTTP request is independent. The server computes something, returns an HTML fragment, and forgets. State lives in the database, the URL, or the client — not in a long-lived R session."
+  },
+  {
+    "objectID": "why.html#why-choose-hyperverse",
+    "href": "why.html#why-choose-hyperverse",
+    "title": "Why hyperverse?",
+    "section": "Why choose hyperverse?",
+    "text": "Why choose hyperverse?\n\nSurgical DOM updates\nShiny reloads entire output blocks (uiOutput, renderUI) — sometimes more than strictly necessary. htmx updates exactly the targeted element, nothing more. The result is smoother interfaces, less visual flicker, and a faster perceived experience.\n\n\nScalability and infrastructure cost\nShiny’s persistent session model means memory consumption scales linearly with the number of connected users. A pool of shared plumber2 workers handles far more concurrent users on the same hardware.\nDeployment is standard: nginx, Docker, any VPS, any cloud platform. No Shiny Server license required.\n\n\nNative HTTP: cache, load balancers, SEO\nhyperverse responses are plain HTML. This means:\n\nHTTP caching — identical requests can be served instantly from a cache layer\nHorizontal load balancing — no sticky sessions to manage, any worker can handle any request\nSearch engine indexability — content lives in the HTML, not generated client-side by JavaScript\n\n\n\nInteroperability\nhyperverse generates standard HTML backed by a standard HTTP API. The same plumber2 endpoints that serve your frontend can be consumed by mobile apps, other services, or scripts in any language — without translation or adaptation.\nThis is particularly valuable when a proof-of-concept built in R needs to grow into a production system: the business logic stays in R, while other parts of the stack can call the same endpoints."
+  },
+  {
+    "objectID": "why.html#when-to-use-each",
+    "href": "why.html#when-to-use-each",
+    "title": "Why hyperverse?",
+    "section": "When to use each",
+    "text": "When to use each\nChoose hyperverse when:\n\nPublic-facing apps with many concurrent users\nForms, CRUD interfaces, admin panels\nSEO and indexability matter\nStandard deployment (Docker, VPS, cloud)\nYou want to expose R logic to other services without rewriting it\n\nChoose Shiny when:\n\nRich analytical dashboards and scientific interfaces\nComplex reactive logic with many interdependent outputs\nRapid prototyping for internal data exploration\nDeep Shiny ecosystem integration (DT, plotly, bslib…)\nYou want R to own the full stack (no HTTP API needed)"
+  },
+  {
+    "objectID": "why.html#summary",
+    "href": "why.html#summary",
+    "title": "Why hyperverse?",
+    "section": "Summary",
+    "text": "Summary\nhyperverse is not a Shiny replacement. It is a different tool for different problems. If you need reactive, session-based dashboards in R, Shiny is the right choice. If you need scalable, HTTP-native apps that interoperate beyond R, hyperverse is the answer."
+  },
+  {
+    "objectID": "glitchtipr.html",
+    "href": "glitchtipr.html",
+    "title": "Monitoring",
+    "section": "",
+    "text": "When an R error occurs in a production app, it disappears silently — unless you’ve set up error tracking. glitchtipr sends errors to GlitchTip with full context (endpoint, query string, sanitised headers) so you can find and fix them without guessing.\nGlitchTip is open source and self-hostable. It implements the Sentry store API, so glitchtipr works with any Sentry-compatible platform."
+  },
+  {
+    "objectID": "glitchtipr.html#in-the-ecosystem",
+    "href": "glitchtipr.html#in-the-ecosystem",
+    "title": "Monitoring",
+    "section": "In the ecosystem",
+    "text": "In the ecosystem\nYou build your app with htmxr. You ship it. Then what?\nWithout error tracking, production is a black box. A user hits /plot with an unexpected parameter — R throws, plumber2 returns a 500, nobody knows. With glitchtipr, that error lands in your dashboard with everything you need to reproduce it."
+  },
+  {
+    "objectID": "glitchtipr.html#one-annotation",
+    "href": "glitchtipr.html#one-annotation",
+    "title": "Monitoring",
+    "section": "One annotation",
+    "text": "One annotation\nglitchtipr ships with a @capture plumber2 tag. Add it above any route — that’s all it takes.\nlibrary(glitchtipr)\n\ngt &lt;- gt_connect()  # reads GLITCHTIP_DSN from .Renviron\n\n#* @capture\n#* @get /plot\n#* @parser none\n#* @serializer none\nfunction(request, query) {\n  generate_plot(query$bins %||% 30)\n}\n@capture wraps the handler automatically. If it throws, the error is reported to GlitchTip with full context — then re-raised so plumber2 handles it normally."
+  },
+  {
+    "objectID": "glitchtipr.html#what-you-see",
+    "href": "glitchtipr.html#what-you-see",
+    "title": "Monitoring",
+    "section": "What you see",
+    "text": "What you see\nErrors are grouped by type and message. Each one shows its occurrence count and when it was last seen — useful for spotting regressions after a deploy.\n\n\n\nGlitchTip issue list showing two captured R errors\n\n\nClicking an issue reveals the full event detail: the endpoint that failed (GET /plot), the query string that triggered it (bins = a), and the sanitised request headers.\n\n\n\nGlitchTip error detail showing endpoint, query string and headers\n\n\nNo log digging. No reproducing in the dark. The context is right there."
+  },
+  {
+    "objectID": "glitchtipr.html#uptime-monitoring",
+    "href": "glitchtipr.html#uptime-monitoring",
+    "title": "Monitoring",
+    "section": "Uptime monitoring",
+    "text": "Uptime monitoring\nThe same GlitchTip dashboard that tracks your errors tells you whether your app is up. Configure a monitor on your endpoint and get notified when it goes down.\n\n\n\nGlitchTip uptime monitor showing response times over time"
+  },
+  {
+    "objectID": "glitchtipr.html#what-to-track-and-what-not-to",
+    "href": "glitchtipr.html#what-to-track-and-what-not-to",
+    "title": "Monitoring",
+    "section": "What to track — and what not to",
+    "text": "What to track — and what not to\nNot every error deserves to be in your dashboard. The rule of thumb: track errors that reveal a bug in your code, not expected user behaviour.\nTrack these:\n\nUnexpected errors in route handlers — anything that shouldn’t happen\nFailed connections to a database or external API\nErrors in code paths you assumed were safe\n\nSkip these:\n\n404s — the user navigated to a URL that doesn’t exist. Not your bug.\n401 / 403 — unauthenticated or forbidden requests are expected behaviour.\nValidation errors — the user submitted a bad form value. Handle them gracefully in your UI, don’t report them as bugs.\n\nIn practice with @capture: if a route can legitimately receive bad input, validate it explicitly and return a clean error response. Reserve @capture for the logic that runs after validation — where a failure means something went wrong in your code."
+  },
+  {
+    "objectID": "glitchtipr.html#works-with-shiny-too",
+    "href": "glitchtipr.html#works-with-shiny-too",
+    "title": "Monitoring",
+    "section": "Works with Shiny too",
+    "text": "Works with Shiny too\ngt_capture() is framework-agnostic — use it in any R code, including Shiny reactive contexts.\n# In render functions — Shiny catches the re-raised error and displays it\noutput$plot &lt;- renderPlot({\n  gt_capture(gt, {\n    hist(faithful[, 2], breaks = input$bins)\n  })\n})\n\n# In observers — wrap with tryCatch after gt_capture() to protect the session\nobserveEvent(input$submit, {\n  tryCatch(\n    gt_capture(gt, { process(input) }),\n    error = function(e) invisible(NULL)\n  )\n})"
+  },
+  {
+    "objectID": "glitchtipr.html#setup",
+    "href": "glitchtipr.html#setup",
+    "title": "Monitoring",
+    "section": "Setup",
+    "text": "Setup\nYou’ll need a GlitchTip instance — either self-hosted or the hosted version. Create a project, copy the DSN, and you’re ready.\nAdd your DSN to .Renviron (usethis::edit_r_environ()):\nGLITCHTIP_DSN=https://KEY@glitchtip.example.com/PROJECT_ID\nIf no DSN is set, gt_connect() returns an inactive connection and gt_capture() is a zero-overhead no-op — safe in development.\npak::pak(\"hyperverse-r/glitchtipr\")"
   }
 ]

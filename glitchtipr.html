@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>hyperverse</title>
+<title>Monitoring – hyperverse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -103,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Get started</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./glitchtipr.html"> 
+    <a class="nav-link active" href="./glitchtipr.html" aria-current="page"> 
 <span class="menu-text">Monitoring</span></a>
   </li>  
 </ul>
@@ -124,134 +159,146 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#in-the-ecosystem" id="toc-in-the-ecosystem" class="nav-link active" data-scroll-target="#in-the-ecosystem">In the ecosystem</a></li>
+  <li><a href="#one-annotation" id="toc-one-annotation" class="nav-link" data-scroll-target="#one-annotation">One annotation</a></li>
+  <li><a href="#what-you-see" id="toc-what-you-see" class="nav-link" data-scroll-target="#what-you-see">What you see</a></li>
+  <li><a href="#uptime-monitoring" id="toc-uptime-monitoring" class="nav-link" data-scroll-target="#uptime-monitoring">Uptime monitoring</a></li>
+  <li><a href="#what-to-track-and-what-not-to" id="toc-what-to-track-and-what-not-to" class="nav-link" data-scroll-target="#what-to-track-and-what-not-to">What to track — and what not to</a></li>
+  <li><a href="#works-with-shiny-too" id="toc-works-with-shiny-too" class="nav-link" data-scroll-target="#works-with-shiny-too">Works with Shiny too</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
 
-
-
-
-<div class="hero">
-<canvas id="hero-canvas"></canvas>
-<div class="hero-title">
-<p><span id="typewriter-text">hyperverse</span></p>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Monitoring</h1>
 </div>
-<div class="lead">
-<p>A modular R ecosystem for building modern web applications, the web way.</p>
-</div>
-<p><a href="./docs.html" class="btn-cta">Get started →</a></p>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div class="packages-grid"><a href="https://hyperverse-r.github.io/htmxr/" class="package-card" target="_blank" rel="noopener">
-    <span class="card-arrow">↗</span>
-    <div class="package-name">htmxr</div>
-    <div class="package-desc">Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.</div>
-    <span class="package-badge badge-cran">CRAN 0.2.0</span>
-  </a>
-<div class="package-card">
+
+
+
+<div class="quarto-title-meta column-page-left">
+
     
-    <div class="package-name">alpiner</div>
-    <div class="package-desc">Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem.</div>
-    <span class="package-badge badge-planned">Planned</span>
-  </div>
-<div class="package-card">
+  
     
-    <div class="package-name">supar</div>
-    <div class="package-desc">Supabase client for R — query your database over HTTP without writing SQL.</div>
-    <span class="package-badge badge-planned">Planned</span>
-  </div></div><div style="text-align:center; margin-top: 2rem;">
-    <a href="ecosystem.html" class="btn-explore">Explore the ecosystem →</a>
   </div>
+  
+
+
+</header>
+
+
+<p>When an R error occurs in a production app, it disappears silently — unless you’ve set up error tracking. <strong>glitchtipr</strong> sends errors to <a href="https://glitchtip.com">GlitchTip</a> with full context (endpoint, query string, sanitised headers) so you can find and fix them without guessing.</p>
+<p>GlitchTip is open source and self-hostable. It implements the Sentry store API, so <strong>glitchtipr</strong> works with any Sentry-compatible platform.</p>
+<hr>
+<section id="in-the-ecosystem" class="level2">
+<h2 class="anchored" data-anchor-id="in-the-ecosystem">In the ecosystem</h2>
+<p>You build your app with <strong>htmxr</strong>. You ship it. Then what?</p>
+<p>Without error tracking, production is a black box. A user hits <code>/plot</code> with an unexpected parameter — R throws, plumber2 returns a 500, nobody knows. With <strong>glitchtipr</strong>, that error lands in your dashboard with everything you need to reproduce it.</p>
+<hr>
+</section>
+<section id="one-annotation" class="level2">
+<h2 class="anchored" data-anchor-id="one-annotation">One annotation</h2>
+<p><strong>glitchtipr</strong> ships with a <code>@capture</code> plumber2 tag. Add it above any route — that’s all it takes.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glitchtipr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>gt <span class="ot">&lt;-</span> <span class="fu">gt_connect</span>()  <span class="co"># reads GLITCHTIP_DSN from .Renviron</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#* @capture</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#* @get /plot</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#* @parser none</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#* @serializer none</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(request, query) {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate_plot</span>(query<span class="sc">$</span>bins <span class="sc">%||%</span> <span class="dv">30</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>@capture</code> wraps the handler automatically. If it throws, the error is reported to GlitchTip with full context — then re-raised so plumber2 handles it normally.</p>
+<hr>
+</section>
+<section id="what-you-see" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-see">What you see</h2>
+<p>Errors are grouped by type and message. Each one shows its occurrence count and when it was last seen — useful for spotting regressions after a deploy.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/glitchtipr/error.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption>GlitchTip issue list showing two captured R errors</figcaption>
+</figure>
 </div>
+<p>Clicking an issue reveals the full event detail: the endpoint that failed (<code>GET /plot</code>), the query string that triggered it (<code>bins = a</code>), and the sanitised request headers.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/glitchtipr/error-context.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption>GlitchTip error detail showing endpoint, query string and headers</figcaption>
+</figure>
 </div>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  /* --- Typewriter --- */
-  const text = "hyperverse";
-  const el = document.getElementById("typewriter-text");
-  el.textContent = "";
-  let i = 0;
-  const type = () => {
-    if (i < text.length) { el.textContent += text[i++]; setTimeout(type, 80); }
-    else el.classList.add("done");
-  };
-  setTimeout(type, 300);
-
-  /* --- Canvas --- */
-  const canvas = document.getElementById("hero-canvas");
-  const ctx    = canvas.getContext("2d");
-
-  function resize() {
-    canvas.width  = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
-  resize();
-  window.addEventListener("resize", resize);
-
-  const cx = () => canvas.width  / 2;
-  const cy = () => canvas.height / 2;
-
-  /* Floating particles */
-  const particles = Array.from({ length: 60 }, () => ({
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * 500,
-    r: Math.random() * 1.5 + 0.5,
-    speed: Math.random() * 0.3 + 0.1,
-    opacity: Math.random() * 0.4 + 0.1,
-  }));
-
-  /* Orbiting dots */
-  const orbits = [
-    { radius: 140, speed: 0.004,  angle: 0,              dotR: 3,   opacity: 0.7  },
-    { radius: 140, speed: 0.004,  angle: Math.PI,        dotR: 3,   opacity: 0.7  },
-    { radius: 200, speed: 0.0025, angle: Math.PI / 2,    dotR: 2,   opacity: 0.4  },
-    { radius: 200, speed: 0.0025, angle: Math.PI * 1.5,  dotR: 2,   opacity: 0.4  },
-    { radius: 260, speed: 0.0015, angle: Math.PI / 4,    dotR: 1.5, opacity: 0.25 },
-  ];
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    /* Particles */
-    particles.forEach(p => {
-      p.y -= p.speed;
-      if (p.y < -4) { p.y = canvas.height + 4; p.x = Math.random() * canvas.width; }
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(180, 180, 255, ${p.opacity})`;
-      ctx.fill();
-    });
-
-    /* Orbit trails */
-    orbits.forEach(o => {
-      ctx.beginPath();
-      ctx.arc(cx(), cy(), o.radius, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(160, 160, 255, 0.06)`;
-      ctx.lineWidth = 1;
-      ctx.stroke();
-    });
-
-    /* Orbiting dots */
-    orbits.forEach(o => {
-      o.angle += o.speed;
-      const x = cx() + Math.cos(o.angle) * o.radius;
-      const y = cy() + Math.sin(o.angle) * o.radius;
-      ctx.beginPath();
-      ctx.arc(x, y, o.dotR, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(200, 200, 255, ${o.opacity})`;
-      ctx.fill();
-    });
-
-    requestAnimationFrame(draw);
-  }
-
-  draw();
-});
-</script>
+<p>No log digging. No reproducing in the dark. The context is right there.</p>
+<hr>
+</section>
+<section id="uptime-monitoring" class="level2">
+<h2 class="anchored" data-anchor-id="uptime-monitoring">Uptime monitoring</h2>
+<p>The same GlitchTip dashboard that tracks your errors tells you whether your app is up. Configure a monitor on your endpoint and get notified when it goes down.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/glitchtipr/monitor.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption>GlitchTip uptime monitor showing response times over time</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="what-to-track-and-what-not-to" class="level2">
+<h2 class="anchored" data-anchor-id="what-to-track-and-what-not-to">What to track — and what not to</h2>
+<p>Not every error deserves to be in your dashboard. The rule of thumb: track errors that reveal a <strong>bug in your code</strong>, not expected user behaviour.</p>
+<p><strong>Track these:</strong></p>
+<ul>
+<li>Unexpected errors in route handlers — anything that shouldn’t happen</li>
+<li>Failed connections to a database or external API</li>
+<li>Errors in code paths you assumed were safe</li>
+</ul>
+<p><strong>Skip these:</strong></p>
+<ul>
+<li><strong>404s</strong> — the user navigated to a URL that doesn’t exist. Not your bug.</li>
+<li><strong>401 / 403</strong> — unauthenticated or forbidden requests are expected behaviour.</li>
+<li><strong>Validation errors</strong> — the user submitted a bad form value. Handle them gracefully in your UI, don’t report them as bugs.</li>
+</ul>
+<p>In practice with <code>@capture</code>: if a route can legitimately receive bad input, validate it explicitly and return a clean error response. Reserve <code>@capture</code> for the logic that runs <em>after</em> validation — where a failure means something went wrong in your code.</p>
+<hr>
+</section>
+<section id="works-with-shiny-too" class="level2">
+<h2 class="anchored" data-anchor-id="works-with-shiny-too">Works with Shiny too</h2>
+<p><code>gt_capture()</code> is framework-agnostic — use it in any R code, including Shiny reactive contexts.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In render functions — Shiny catches the re-raised error and displays it</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt_capture</span>(gt, {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hist</span>(faithful[, <span class="dv">2</span>], <span class="at">breaks =</span> input<span class="sc">$</span>bins)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># In observers — wrap with tryCatch after gt_capture() to protect the session</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">observeEvent</span>(input<span class="sc">$</span>submit, {</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tryCatch</span>(</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gt_capture</span>(gt, { <span class="fu">process</span>(input) }),</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">error =</span> <span class="cf">function</span>(e) <span class="fu">invisible</span>(<span class="cn">NULL</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<p>You’ll need a GlitchTip instance — either <a href="https://glitchtip.com/documentation/install">self-hosted</a> or the <a href="https://app.glitchtip.com">hosted version</a>. Create a project, copy the DSN, and you’re ready.</p>
+<p>Add your DSN to <code>.Renviron</code> (<code>usethis::edit_r_environ()</code>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">GLITCHTIP_DSN</span><span class="op">=</span>https://KEY@glitchtip.example.com/PROJECT_ID</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If no DSN is set, <code>gt_connect()</code> returns an inactive connection and <code>gt_capture()</code> is a zero-overhead no-op — safe in development.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">"hyperverse-r/glitchtipr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
