@@ -8,7 +8,7 @@
 - name: lucidr
   desc: "Lucide icons for R — embed beautiful and consistent SVG icons inline in any R web application, with no external dependency."
   badge: CRAN 0.1.0
-  badge_class: badge-dev
+  badge_class: badge-cran
   github: https://github.com/hyperverse-r/lucidr
   pkgdown: https://hyperverse-r.github.io/lucidr/
 
