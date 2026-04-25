@@ -29,7 +29,9 @@ website:
 
 format:
   html:
-    theme: [darkly, styles.scss]
+    theme:
+      dark: [darkly, styles.scss]
+      light: [flatly, styles-light.scss]
     highlight-style: dracula
     toc: false
     page-layout: full
