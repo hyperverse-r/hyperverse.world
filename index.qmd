@@ -22,7 +22,7 @@ source(here::here("R/packages.R"))
 A modular R ecosystem for building modern web applications, the web way.
 :::
 
-[Get started →](docs.qmd){.btn-cta}
+[Get started →](getting-started.qmd){.btn-cta}
 :::
 
 ```{r}
