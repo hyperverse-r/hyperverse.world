@@ -9,6 +9,7 @@ website:
   site-url: https://hyperverse.world
   favicon: assets/hyperverse.svg
   search: true
+  include-in-header: analytics.html
   navbar:
     background: "#232323"
     foreground: "#f0f0f0"
