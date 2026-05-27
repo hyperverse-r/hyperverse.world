@@ -20,6 +20,11 @@ body {
   background-size: 24px 24px;
 }
 
+/* Reserve the display font for h1 / accent labels — h2+ use body font for readability */
+h2, h3, h4, h5, h6 {
+  font-family: $font-family-sans-serif;
+}
+
 /* Navbar */
 .navbar {
   border-bottom: 1px solid #2a2a2a;
@@ -152,7 +157,6 @@ body {
   }
 
   .package-name {
-    font-family: $headings-font-family;
     font-size: 1rem;
     font-weight: 600;
     color: #ffffff;
@@ -231,7 +235,6 @@ body {
   padding: 60px 24px;
 
   h2 {
-    font-family: $headings-font-family;
     font-size: 1.5rem;
     color: #ffffff;
     margin-bottom: 2rem;
