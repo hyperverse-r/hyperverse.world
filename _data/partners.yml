@@ -1,0 +1,7 @@
+- name: supabaseR
+  desc: "Supabase client for R — REST API, auth, and storage wrappers. Pairs naturally with htmxr / plumber2 endpoints."
+  author: DeepanshKhurana
+  badge: CRAN
+  badge_class: badge-cran
+  github: https://github.com/DeepanshKhurana/supabaseR
+  pkgdown: ~

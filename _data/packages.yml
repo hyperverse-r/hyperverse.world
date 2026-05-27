@@ -27,17 +27,10 @@
   pkgdown: ~
 
 - name: alpiner
-  desc: "Alpine.js wrapper for R — declarative client-side logic without leaving the R ecosystem."
-  badge: Planned
-  badge_class: badge-planned
-  github: ~
-  pkgdown: ~
-
-- name: supar
-  desc: "Supabase client for R — query your database over HTTP without writing SQL."
-  badge: Planned
-  badge_class: badge-planned
-  github: ~
+  desc: "Alpine.js wrapper for R — local client-side reactivity, paired with htmxr for server-driven updates."
+  badge: In development
+  badge_class: badge-dev
+  github: https://github.com/hyperverse-r/alpiner
   pkgdown: ~
 
 - name: glitchtipr

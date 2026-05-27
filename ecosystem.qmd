@@ -1,5 +1,5 @@
 ---
-title: "Ecosystem"
+title: "Hyperverse ecosystem"
 toc: false
 ---
 
@@ -8,7 +8,23 @@ toc: false
 source(here::here("R/packages.R"))
 ```
 
+## Hyperverse packages
+
+Core R packages built and maintained under the `hyperverse-r` organization.
+They share the same design conventions, compose cleanly together, and are
+aimed at CRAN.
+
 ```{r}
 #| echo: false
 packages_grid()
+```
+
+## Compatible packages
+
+Third-party R packages that aren't part of the `hyperverse-r` organization but
+play well with the stack. Listed here so you can find them when you need them.
+
+```{r}
+#| echo: false
+partners_grid()
 ```
