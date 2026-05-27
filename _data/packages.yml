@@ -31,7 +31,7 @@
   badge: In development
   badge_class: badge-dev
   github: https://github.com/hyperverse-r/alpiner
-  pkgdown: ~
+  pkgdown: https://hyperverse-r.github.io/alpiner/
 
 - name: glitchtipr
   desc: "GlitchTip client for R — error tracking and performance monitoring for your R applications."
