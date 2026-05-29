@@ -1,0 +1,13 @@
+format:
+  revealjs:
+    theme: [default, ../assets/hyperverse-revealjs.scss]
+    embed-resources: true
+    transition: fade
+    progress: true
+    slide-number: c/t
+    incremental: false
+    auto-stretch: false
+    width: 1280
+    height: 720
+    highlight-style: dracula
+    lang: fr

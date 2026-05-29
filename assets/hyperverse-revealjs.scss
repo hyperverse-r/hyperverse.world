@@ -1,0 +1,103 @@
+/*-- scss:defaults --*/
+
+// Hyperverse universe — palette light (iso hyperverse.world light mode)
+$body-bg: #f8f8f8;
+$body-color: #2d2d2d;
+$link-color: #4a6cf7;
+
+// Fonts
+$font-family-sans-serif: "Lato", system-ui, sans-serif;
+$font-family-monospace: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+$headings-font-family: "Vampiro One", cursive;
+
+$presentation-font-family: $font-family-sans-serif;
+$presentation-heading-font: $font-family-sans-serif;
+$presentation-heading-color: #1a1a1a;
+$presentation-heading-text-shadow: none;
+$presentation-heading-text-transform: none;
+$presentation-heading-font-weight: 600;
+
+$presentation-font-size-root: 25px;
+$presentation-h1-font-size: 2.2em;
+$presentation-h2-font-size: 1.75em;
+$presentation-h3-font-size: 1.25em;
+/*-- scss:rules --*/
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Vampiro+One&family=Lato:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ---------- Background ---------- */
+.reveal-viewport {
+  background-color: #{$body-bg};
+  background-image: radial-gradient(circle, #d8d8d8 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.reveal {
+  font-family: $font-family-sans-serif;
+  color: $body-color;
+  letter-spacing: 0.005em;
+}
+
+.reveal h1 {
+  font-family: $headings-font-family;
+  color: #1a1a1a;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.6em;
+}
+
+.reveal h2 {
+  margin-bottom: 1em;
+}
+
+#title-slide {
+  text-align: center;
+
+  .title {
+    font-family: $headings-font-family !important;
+    font-size: 3em;
+    color: #1a1a1a;
+    letter-spacing: 0.02em;
+    margin: 0 0 0.4em;
+    line-height: 1;
+  }
+
+  .subtitle {
+    font-size: 0.95em;
+    color: #555;
+    font-weight: 400;
+    max-width: 22em;
+    margin: 0 auto 2.2em;
+    line-height: 1.4;
+  }
+
+  .quarto-title-authors {
+    font-size: 0.7em;
+    color: #aaa;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+
+  .date {
+    font-size: 0.7em;
+    color: #aaa;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+}
+
+.reveal code {
+  padding: 2px 4px;
+  border-radius: 5px;
+  color: $body-bg  ;
+  background-color: black;
+}
+
+.attribution {
+  text-align: right;
+  margin-right: 2em;
+  font-style: italic;
+  opacity: 0.7;
+}

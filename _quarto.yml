@@ -22,6 +22,8 @@ website:
         text: Get started
       - href: glitchtipr.qmd
         text: Monitoring
+      - href: talks.qmd
+        text: Talks
     right:
       - icon: github
         href: https://github.com/hyperverse-r

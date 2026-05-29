@@ -1,0 +1,43 @@
+meta:
+  name: hyperverse
+  link: https://hyperverse.world
+
+logo:
+  small: assets/hyperverse.svg
+  medium: assets/hyperverse.svg
+  large: assets/hyperverse.svg
+
+color:
+  palette:
+    hv-dark: "#232323"
+    hv-light: "#f8f8f8"
+    hv-ink: "#2d2d2d"
+    hv-paper: "#e8e8e8"
+    hv-link-dark: "#a3c4f3"
+    hv-link-light: "#4a6cf7"
+    hv-accent: "#a0a0ff"
+  primary: hv-link-light
+  foreground: hv-ink
+  background: hv-light
+
+typography:
+  fonts:
+    - family: Lato
+      source: google
+      weight: [400, 500, 600, 700]
+    - family: Vampiro One
+      source: google
+    - family: JetBrains Mono
+      source: google
+      weight: [400, 500, 600]
+  base:
+    family: Lato
+    weight: 400
+  headings:
+    family: Vampiro One
+    weight: 400
+  monospace:
+    family: JetBrains Mono
+    weight: 400
+  link:
+    color: hv-link-light
