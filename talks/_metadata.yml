@@ -2,6 +2,7 @@ format:
   revealjs:
     theme: [default, ../assets/hyperverse-revealjs.scss]
     embed-resources: true
+    include-in-header: ../../analytics.html
     transition: fade
     progress: true
     slide-number: c/t
