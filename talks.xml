@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>hyperverse</title>
+<link>https://hyperverse.world/talks.html</link>
+<atom:link href="https://hyperverse.world/talks.xml" rel="self" type="application/rss+xml"/>
+<description>Slides from meetups and conferences about the hyperverse ecosystem.</description>
+<generator>quarto-1.9.38</generator>
+<lastBuildDate>Fri, 29 May 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <dc:creator>Arthur Bréant</dc:creator>
+  <link>https://hyperverse.world/talks/mini-meetup-thinkr-mai-2026/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>htmxr</category>
+  <category>alpiner</category>
+  <category>glitchtipr</category>
+  <category>shiny</category>
+  <guid>https://hyperverse.world/talks/mini-meetup-thinkr-mai-2026/</guid>
+  <pubDate>Fri, 29 May 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://hyperverse.world/talks/mini-meetup-thinkr-mai-2026/img/intro_htmxr_hello.png" medium="image" type="image/png" height="200" width="144"/>
+</item>
+</channel>
+</rss>

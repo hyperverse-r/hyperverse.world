@@ -1,5 +1,488 @@
 [
   {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#section",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#section",
+    "title": "hyperverse",
+    "section": "",
+    "text": "“Ce que tu fais avec Shiny, ce n’est pas du vrai web.”\n\n\nMon ancien patron\n\n\nQuand j’ai commencé R, avant ThinkR, mon patron m’a dit un jour :\n‘ce que tu fais avec Shiny, ce n’est pas du vrai web’.\nJ’étais vexé. Je faisais des apps, elles tournaient dans un navigateur, des gens les utilisaient : c’était quoi son problème ?"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#quelques-années-plus-tard",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#quelques-années-plus-tard",
+    "title": "hyperverse",
+    "section": "Quelques années plus tard…",
+    "text": "Quelques années plus tard…\n\nQuelques années plus tard, je comprends.\nIl n’avait pas complètement raison :\n-&gt; Shiny est légitime, c’est ce qui m’a appris à coder interactif.\nMais il n’avait pas tort non plus :\nShiny ne fait pas du web au sens où le web a été conçu. C’est une app desktop qui s’exécute dans un browser, avec R comme moteur."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#le-déclic",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#le-déclic",
+    "title": "hyperverse",
+    "section": "Le déclic",
+    "text": "Le déclic\n\nLa release de {plumber2} sur le CRAN !\n🔗 Blog du Tidyverse\n\n\nDéclic car pour moi c’est le package qui permet de faire du web comme on l’entend avec des requêtes HTTP et pleins de nouvelles fonctionnalités dont : async"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#htmx-htmxr",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#htmx-htmxr",
+    "title": "hyperverse",
+    "section": "🔗 htmx … htmxr",
+    "text": "🔗 htmx … htmxr"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#htmxr-1",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#htmxr-1",
+    "title": "hyperverse",
+    "section": "htmxr",
+    "text": "htmxr\n🔥 htmx gère les interactions côté client via des attributs HTML.\n🔥 plumber2 gère les points de terminaison R côté serveur.\n\n\n\n🚀 htmxr fait le lien entre les deux grâce à :\n\ndes fonctions d’aide R qui génèrent le code HTML approprié et,\nassurent l’interconnexion de l’ensemble."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#hello.demo.hyperverse.world",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#hello.demo.hyperverse.world",
+    "title": "hyperverse",
+    "section": "🔗 hello.demo.hyperverse.world",
+    "text": "🔗 hello.demo.hyperverse.world"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#plutôt-fast-hein",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#plutôt-fast-hein",
+    "title": "hyperverse",
+    "section": "Plutôt fast, hein ? 😏",
+    "text": "Plutôt fast, hein ? 😏"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#fast-and-furious",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#fast-and-furious",
+    "title": "hyperverse",
+    "section": "Fast and furious",
+    "text": "Fast and furious\n\n\nApplication htmxr :\n🔗 hello.demo.hyperverse.world\n\nApplications Shiny :\nvia Shinyproxy : 🔗 open-apps.breant.art/app/hello-shiny\nvia Posit Connect : 🔗 connect.thinkr.fr/hello-shiny"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#fast-and-furious-vraiment",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#fast-and-furious-vraiment",
+    "title": "hyperverse",
+    "section": "fast and furious, vraiment ? 🤔",
+    "text": "fast and furious, vraiment ? 🤔"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#section-1",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#section-1",
+    "title": "hyperverse",
+    "section": "",
+    "text": "Faire du web depuis R, le web comme il a été conçu\n\n\nAujourd’hui je vous montre une autre façon de faire du web depuis R.\nPas mieux que Shiny, mais différente.\nUne façon qui s’appuie sur les standards web : HTTP, HTML, composants natifs du navigateur.\nOn va voir ce que ça donne en pratique, sur quelques métriques, et ce que ça change économiquement."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#la-mécanique-htmxr",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#la-mécanique-htmxr",
+    "title": "hyperverse",
+    "section": "La mécanique htmxr",
+    "text": "La mécanique htmxr\nNavigateur                Serveur R\n   │                          │\n   │  ─── GET /plot ────►     │\n   │                       (R génère du HTML)\n   │  ◄─── &lt;svg&gt;...&lt;/svg&gt;     │\n   │                          │\n (DOM swap)\n\nhtmxr, c’est ça : HTTP standard. HTML standard.\nLe navigateur demande, R répond du HTML. htmx insère dans la page. Rien d’autre.\nPas de WebSocket, pas de session, pas de système réactif. Juste le web tel qu’il a été conçu en 1990, depuis R."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#fast-chargement-initial",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#fast-chargement-initial",
+    "title": "hyperverse",
+    "section": "Fast : chargement initial",
+    "text": "Fast : chargement initial\n-&gt; Où : sur mon VPS directement.\n-&gt; Outil : Playwright.\n-&gt; Quoi mesuré : temps écoulé entre page.goto(url) et le moment où le plot SVG/IMG est réellement visible dans le DOM.\n\n\nApplication htmxr :\n🔗 hello.demo.hyperverse.world\n🔥 0.3s\n\nApplication Shiny :\n🔗 open-apps.breant.art/app/hello-shiny\n🔥 0.9s\n\n\nProtocole\n\nWarmup : 1 chargement de la page avant la mesure → cache navigateur amorcé (Bootstrap CDN, assets Shiny, etc.)\nMesure : 5 runs, je prends la médiane (pas la moyenne — robuste aux outliers)\n\nRésultats bruts\n┌─────────┬────────────┬────────────┐ │ Run │ htmxr (ms) │ Shiny (ms) │ ├─────────┼────────────┼────────────┤ │ 1 │ 296 │ 1200 │ ├─────────┼────────────┼────────────┤ │ 2 │ 294 │ 891 │ ├─────────┼────────────┼────────────┤ │ 3 │ 252 │ 974 │ ├─────────┼────────────┼────────────┤ │ 4 │ 234 │ 934 │ ├─────────┼────────────┼────────────┤ │ 5 │ 321 │ 871 │ ├─────────┼────────────┼────────────┤ │ Médiane │ 294 │ 934 │ └─────────┴────────────┴────────────┘"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#fast-interaction-slider",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#fast-interaction-slider",
+    "title": "hyperverse",
+    "section": "Fast : interaction slider",
+    "text": "Fast : interaction slider\n-&gt; Où : sur mon VPS directement.\n-&gt; Quoi mesuré : temps écoulé quand on bouge le slider\n\n\nApplication htmxr :\n🔗 hello.demo.hyperverse.world\n🔥 Quasi instantané\n\nApplication Shiny :\n🔗 open-apps.breant.art/app/hello-shiny\n🔥 Micro délai\n\n\n\n\nle navigateur fait un GET /plot?bins=X,\nR génère un SVG en 12 ms.\nhtmx swap dans le DOM.\n\n-&gt; Trois étapes, toutes standard.\n\n\nnouvelle valeur via WebSocket,\ninvalidation du graphe réactif,\nrecalcul,\nrendu PNG, encodage base64,\nretour via WS,\nupdate DOM.\n\n-&gt; Sept étapes, dont plusieurs spécifiques à Shiny.\n\n\nMon bench ne me donne pas le chiffre côté Shiny — hey ne mesure pas le WebSocket :\nhttps://hub.docker.com/r/williamyeh/hey"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#fast-poids-client",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#fast-poids-client",
+    "title": "hyperverse",
+    "section": "Fast : poids client",
+    "text": "Fast : poids client\nPourquoi ces différences ? Deps JS/CSS : 2 vs 13\n\n\n\n\n\n\nVoici ce que les deux serveurs envoient au navigateur. À gauche htmxr : 30 lignes de HTML\nÀ droite Shiny : 48 lignes, et surtout 13 dépendances dans le head — jquery, shiny.js, ionRangeSlider qui réécrit le slider natif, bs3compat qui gère la rétrocompatibilité Bootstrap 3, etc. La philosophie web standard : utiliser ce que le navigateur sait déjà faire. Shiny a fait le choix opposé — réécrire les composants en JS pour avoir un contrôle fin. Les deux choix sont défendables. Mais on voit ici visuellement pourquoi le poids et la vitesse divergent."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#la-conséquence-économique",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#la-conséquence-économique",
+    "title": "hyperverse",
+    "section": "La conséquence économique",
+    "text": "La conséquence économique"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#furious-lasymétrie",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#furious-lasymétrie",
+    "title": "hyperverse",
+    "section": "Furious : l’asymétrie",
+    "text": "Furious : l’asymétrie\n\n\nhtmxr (stateless HTTP) ──────────────────────\n1 process R partagé\nRAM ♾️ requêtes actives\nUser inactif = gratuit\n\nShiny (stateful WS) ─────────────────────\n1 session R par user\nRAM ♾️ users connectés\nUser inactif = coûte"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#payer-le-travail-réel",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#payer-le-travail-réel",
+    "title": "hyperverse",
+    "section": "Payer le travail réel !",
+    "text": "Payer le travail réel !"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#furious-la-facture-ovh",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#furious-la-facture-ovh",
+    "title": "hyperverse",
+    "section": "Furious : la facture OVH",
+    "text": "Furious : la facture OVH\nAvec mon VPS à 6.62 €/mois TTC :\n→ 20 users Shiny en simultané (1 container/user)\n→ 1000+ users htmxr (1 process pour tous)\n\n\nÀ 500 users actifs :\nhtmxr → même VPS-1 → 6.62 € TTC/mois\nShiny → dédié RISE-1 64 GB → ~78 € HT/mois\n\n\n\n🔥 HTTP est stateless par design : chaque requête est indépendante !\n\n\nC’est là que le modèle web standard paie. HTTP est stateless par design — chaque requête est indépendante. Donc votre serveur ne porte pas le coût des users connectés mais inactifs. Vous payez le travail réel : une requête en cours, c’est de la mémoire ; un user qui idle sur sa page, c’est gratuit. Shiny fait l’inverse : chaque user connecté pinne une session R en mémoire, même s’il regarde son téléphone pendant 10 minutes. La conséquence directe en facture OVH : pour 500 users actifs, vous passez d’un dédié à 78 € HT/mois à un VPS à 6 € TTC. Source : ovhcloud.com vérifié mai 2026"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#furious-ce-que-tu-hérites-gratuitement",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#furious-ce-que-tu-hérites-gratuitement",
+    "title": "hyperverse",
+    "section": "Furious : ce que tu hérites gratuitement",
+    "text": "Furious : ce que tu hérites gratuitement\nhtmxr = HTTP + HTML + composants natifs du navigateur\n\n\nCe que qu’on peut récupérer gratuitement :\n→ Cache HTTP, CDN, replicas, scaling horizontal\n→ Monitoring et debugging avec les outils web standard\n→ Déployable n’importe où (Docker, VPS, k8s, serverless)\n→ URLs adressables\n→ on paie pour le travail, pas pour les sessions"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#lanalogie-du-restaurant",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#lanalogie-du-restaurant",
+    "title": "hyperverse",
+    "section": "L’analogie du restaurant",
+    "text": "L’analogie du restaurant\n\n\nClient\nTu commandes\n\nServeur (API)\nIl transmet\n\nCuisine (backend)\nElle prépare\n\n\n\n\nLe client ne rentre jamais en cuisine.\nLe serveur fournit un menu (la documentation)."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#lapi-cest-un-contrat",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#lapi-cest-un-contrat",
+    "title": "hyperverse",
+    "section": "L’API, c’est un contrat 🤝",
+    "text": "L’API, c’est un contrat 🤝\n\n\nLe client s’engage à :\n\nEnvoyer une requête bien formée\nRespecter le format attendu\n\n\nLe serveur s’engage à :\n\nRépondre dans un format précis\nRenvoyer des codes prévisibles\n\n\n\n\n\nComme un menu de restaurant : tu sais ce que tu commandes, à quel prix, en combien de temps.\nComme un contrat juridique : chacun connaît ses obligations."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#linteropérabilité-le-pouvoir-du-contrat",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#linteropérabilité-le-pouvoir-du-contrat",
+    "title": "hyperverse",
+    "section": "L’interopérabilité : le pouvoir du contrat",
+    "text": "L’interopérabilité : le pouvoir du contrat\nUne seule API. N’importe quel client.\n\n\n\n\nAvec htmxr, un endpoint est consommable de partout : navigateur, curl, Python, JS, Go, …\nAvec Shiny, une app n’est consommable que par un navigateur qui fait tourner Shiny.\n\n\n\nC’est un argument stratégique majeur\nTu écris ta logique métier une fois en R, et tu peux la servir à tous tes consommateurs : un script Python qui veut les données, une app mobile, un export Excel, et bien sûr le navigateur via htmx.\nAvec Shiny, si tu veux exposer la même logique à un autre client, tu dois écrire une seconde app\nhtmxr unifie tout."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#les-verbes-http",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#les-verbes-http",
+    "title": "hyperverse",
+    "section": "Les verbes HTTP",
+    "text": "Les verbes HTTP\n\n\n\nVerbe\nSens\nIdempotent\n\n\n\n\nGET\n“donne-moi”\n✅\n\n\nPOST\n“voici qqch à créer”\n❌\n\n\nPUT\n“remplace tout”\n✅\n\n\nPATCH\n“modifie un bout”\n✅\n\n\nDELETE\n“supprime”\n✅\n\n\n\n\n\n\n🔥 Règle d’or : chaque requête est indépendante.\nLe serveur ne se souvient pas de toi entre deux requêtes : c’est le stateless qu’on a vu plus tôt.\n\n\nIdempotent veut dire : appeler la même requête plusieurs fois produit le même résultat.\nGET 10 fois → même réponse, aucun effet de bord. POST 10 fois → 10 ressources créées (non idempotent).\nC’est important pour les retries automatiques, le cache, etc.\nNe pas s’attarder sur idempotence si la salle a l’air à l’aise — c’est dans le tableau pour les seniors qui le veulent."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#lastuce-htmx-démo-live",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#lastuce-htmx-démo-live",
+    "title": "hyperverse",
+    "section": "L’astuce htmx — démo live",
+    "text": "L’astuce htmx — démo live\nhx_run_example(\"json-endpoint\")\n\n\nMême donnée (diamond_data()), deux endpoints :\n\n\nGET /api/rows\n#* @serializer json\n\n\n→ Pour curl, Python, mobile…\n\nGET /rows\n#* @serializer none (HTML)\n\n\n→ Pour htmx\n\n\n\n\n🔥 Même backend, deux clients.\nC’est htmxr: une API REST avec une sérialisation HTML pour le navigateur.\n\n\nDémo en live : 1. Lance hx_run_example(“json-endpoint”) dans ta console 2. Ouvre /api/rows dans le navigateur → JSON brut 3. Ouvre / dans le navigateur → page interactive avec la même donnée 4. Inspecte le DOM : le tbody se met à jour quand on change le filtre cut\nPhrase clé à dire : “Vous écrivez votre logique métier une fois, et vous la servez dans le format qui convient à chaque client. Avec Shiny, vous écrivez deux apps : une Shiny pour les humains, une plumber pour les autres clients. Avec htmxr, c’est la même API.”\nPour les détails sur les attributs htmx (hx-get, hx-target, hx-swap, hx-trigger), pointe vers getting-started.qmd sur hyperverse.world."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#deux-modèles-de-communication",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#deux-modèles-de-communication",
+    "title": "hyperverse",
+    "section": "Deux modèles de communication",
+    "text": "Deux modèles de communication\n\n\n\n\n\n\n\n\n\nShiny\nhtmxr\n\n\n\n\nCommunication\nWebSocket (connexion persistante)\nHTTP (requête / réponse)\n\n\nParadigme\nGraphe réactif\nRequêtes HTTP explicites\n\n\nMises à jour UI\nShiny décide quoi recharger\nOn cible le DOM précisément\n\n\nÉtat\nSession R par utilisateur\nBase de données ou URL\n\n\nBackend\nR uniquement\nN’importe quel serveur HTTP\n\n\n\n\nLe tableau est un récap visuel pour fixer ce qu’on a vu dans le bench.\nLe point clé : ce ne sont pas deux versions du même modèle. Ce sont DEUX MODÈLES DIFFÉRENTS de communication entre navigateur et serveur.\nL’un (Shiny) garde le tuyau ouvert en permanence. L’autre (hyperverse) ouvre, demande, ferme, recommence.\nConséquence : tout le reste découle de ce choix de communication."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#une-phrase-à-retenir",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#une-phrase-à-retenir",
+    "title": "hyperverse",
+    "section": "Une phrase à retenir",
+    "text": "Une phrase à retenir\nEn Shiny, le serveur réagit,\nEn htmxr, le navigateur demande.\n\nC’est LA phrase à graver. À répéter au micro.\nShiny est un modèle “push” — le serveur orchestre, décide quoi mettre à jour, et envoie au client.\nhtmxr est un modèle “pull” — c’est le client qui prend l’initiative et demande quand il a besoin.\nCette inversion d’initiative change tout : - qui porte la complexité (serveur en Shiny, client en htmxr) - comment ça scale (sessions vs requêtes) - ce qu’on peut faire avec (apps internes vs apps publiques)"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#installation",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#installation",
+    "title": "hyperverse",
+    "section": "Installation",
+    "text": "Installation\ninstall.packages(\"htmxr\")\n\n# version de développement\npak::pak(\"hyperverse-r/htmxr\")\n\n\n\n📦 htmxr Version actuelle : v0.2.0.\n🔗 Dépend de plumber2 pour le serveur HTTP.\n\n\nRappel : htmxr est sur le CRAN, donc accessible à tout dev R sans bricolage.\nMentionne aussi que plumber2 est requis — c’est le serveur HTTP qui exécute les routes annotées que tu vas voir.\nSi quelqu’un demande la différence avec plumber v1 : plumber2 a l’async, des routes plus modulaires, et un meilleur support des serializers HTML."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#le-cycle-htmx-en-4-étapes",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#le-cycle-htmx-en-4-étapes",
+    "title": "hyperverse",
+    "section": "Le cycle htmx en 4 étapes",
+    "text": "Le cycle htmx en 4 étapes\n\n\n\n\n\n\n\n\n\nUn événement déclenche\nhtmx envoie une requête HTTP\nLe serveur renvoie un fragment HTML\nhtmx insère le fragment dans le DOM\n\n\n\nUtilise l’image intro_htmxr.png du README de htmxr — elle illustre exactement ce cycle.\nInsiste sur “fragment HTML” : c’est le pivot. Pas du JSON à parser, pas du DOM à reconstruire — du HTML déjà prêt à coller dans la page.\nAucune ligne de JavaScript écrite par toi. Pour un dev R qui ne veut pas apprendre JS, c’est libérateur.\nPour les détails complets : pointe vers getting-started.qmd sur hyperverse.world."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#cinq-attributs-html-cinq-paramètres-r",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#cinq-attributs-html-cinq-paramètres-r",
+    "title": "hyperverse",
+    "section": "Cinq attributs HTML, cinq paramètres R",
+    "text": "Cinq attributs HTML, cinq paramètres R\n\n\n\nAttribut HTML\nParamètre htmxr\nRôle\n\n\n\n\nhx-get\nget\nrequête GET\n\n\nhx-post\npost\nrequête POST\n\n\nhx-target\ntarget\nsélecteur CSS cible\n\n\nhx-swap\nswap\nmode d’insertion\n\n\nhx-trigger\ntrigger\névénement déclencheur\n\n\n\n\n\n\n💡 Chaque attribut HTML de htmx correspond à un paramètre dans htmxr.\nTu écris du R, htmxr génère le HTML avec les bons attributs.\n\n\nCe sont les 5 attributs qu’ils vont voir dans le TD.\nLe mapping 1:1 est crucial : aucune magie, juste de la traduction R → HTML.\nPour les variantes (outerHTML, afterend, modificateurs comme delay:300ms ou from:body…) : pointer vers getting-started.qmd."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#helpers-la-structure-dune-page",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#helpers-la-structure-dune-page",
+    "title": "hyperverse",
+    "section": "Helpers : la structure d’une page",
+    "text": "Helpers : la structure d’une page\n\n\n\nhx_page() → document HTML complet\nhx_head() → section &lt;head&gt;\n\n\n\n💡 hx_page() injecte automatiquement le &lt;script&gt; qui charge htmx.min.js.\n\n#* @get /\n#* @parser none\n#* @serializer html\nfunction() {\n  hx_page(\n    hx_head(\n      title = \"Ma page\"\n    ),\n    tags$div(\n      class = \"container\",\n      tags$h1(\"Bonjour\")\n    )\n  )\n}\n\n\n📖 Les annotations plumber2 :\n\n#* @get / → cette fonction répond aux requêtes GET /\n#* @parser none → pas de parsing du body (inutile pour un GET)\n#* @serializer html → le résultat est sérialisé en HTML\n\n\n\nhx_page() est l’équivalent de fluidPage() côté Shiny : le wrapper de page complète.\nhx_head() gère la balise head : titre, CSS, meta, etc.\nLes annotations plumber2 : - @get / : route qui répond à GET sur l’URL racine - @parser none : on désactive le parsing automatique du body de la requête (pas utile pour GET) - @serializer html : on dit à plumber2 de sérialiser le résultat en HTML (par défaut c’est JSON)\nC’est exactement le pattern qu’ils verront partout dans le TD : route page + serializer html.\nInsiste : htmxr est CSS-agnostique. Tu charges le CSS que tu veux à la main (Bootstrap, DaisyUI, Pico, rien du tout…). Pas de framework imposé.\nSi quelqu’un demande “pourquoi serializer html plutôt que json” : c’est exactement l’astuce htmx qu’on a vue plus tôt — au lieu de renvoyer des données brutes, on renvoie du HTML directement insérable dans la page."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#helpers-les-composants-dinput",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#helpers-les-composants-dinput",
+    "title": "hyperverse",
+    "section": "Helpers : les composants d’input",
+    "text": "Helpers : les composants d’input\n\n\n\nhx_slider_input() → &lt;input type=\"range\"&gt;\nhx_select_input() → &lt;select&gt;\nhx_button() → &lt;button&gt;\n\n\n\n💡 Chaque composant accepte les 5 paramètres htmx (get, target, trigger…).\n\n\n\n🧠 Composants d’input conçus pour ressembler aux composants Shiny (sliderInput, selectInput), pour faciliter la transition mentale.\n\n\nhx_slider_input(\n  id = \"bins\",\n  label = \"Nombre de bins :\",\n  value = 30,\n  min = 1,\n  max = 50,\n  get = \"/plot\",\n  trigger = \"input changed delay:300ms\",\n  target = \"#plot\"\n)\n\n\nPattern unique : chaque composant prend des params standards (id, label, value…) + les 5 params htmx pour câbler la requête au serveur.\nIls sont conçus pour ressembler aux composants Shiny (sliderInput, selectInput), pour faciliter la transition mentale des Shiny devs."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#helpers-augmenter-nimporte-quel-tag",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#helpers-augmenter-nimporte-quel-tag",
+    "title": "hyperverse",
+    "section": "Helpers : augmenter n’importe quel tag",
+    "text": "Helpers : augmenter n’importe quel tag\n\n\n🌟 hx_set() = le helper le plus puissant.\n\n\nIl ajoute les attributs hx-* sur n’importe quel tag htmltools.\n\n\nUtile pour transformer un &lt;div&gt;, &lt;a&gt;, &lt;span&gt;… existant en cible htmx.\n\ntags$div(id = \"plot\") |&gt;\n  hx_set(\n    get = \"/plot\",\n    trigger = \"load\",\n    target = \"#plot\",\n    swap = \"innerHTML\"\n  )\n\n\nhx_set() est ta backdoor : quand aucun composant htmxr ne correspond à ton besoin, tu prends un tag htmltools brut et tu lui ajoutes les attributs htmx via pipe.\nC’est ce qui rend htmxr extensible : tout package qui produit du htmltools (bslib, htmxr.bootstrap, n’importe quoi) peut être augmenté en composant htmx avec hx_set()."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#helpers-les-tables",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#helpers-les-tables",
+    "title": "hyperverse",
+    "section": "Helpers : les tables",
+    "text": "Helpers : les tables\n\n\n\nhx_table() → squelette &lt;table&gt; avec &lt;tbody&gt; ciblable\nhx_table_rows() → fragment de lignes &lt;tr&gt;\n\n\n\n💡 Pattern courant : la page renvoie le squelette, un endpoint séparé renvoie les rows.\n\n# Dans la page\nhx_table(\n  columns = c(\"nom\", \"prix\"),\n  tbody_id = \"tbody\",\n  get = \"/rows\",\n  trigger = \"load\"\n)\n\n# Dans le fragment endpoint\n#* @get /rows\n#* @serializer none\nfunction() {\n  hx_table_rows(\n    data,\n    columns = c(\"nom\", \"prix\")\n  )\n}\n\n\nPattern à montrer rapidement — ils vont le retrouver dans json-endpoint et select-input.\nLe squelette de table est servi avec la page. Le tbody se met à jour indépendamment via un fragment endpoint dédié. C’est le pattern le plus utilisé pour les tableaux dynamiques en htmxr."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#organisation-dun-fichier-api.r",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#organisation-dun-fichier-api.r",
+    "title": "hyperverse",
+    "section": "Organisation d’un fichier api.R",
+    "text": "Organisation d’un fichier api.R\n\n\nlibrary(htmxr)\n\n# ── Route page complète ─────────────────\n#* @get /\n#* @parser none\n#* @serializer html\nfunction() {\n  hx_page(\n    hx_head(title = \"Ma première app\"),\n    tags$div(\n      id = \"content\"\n    ) |&gt;\n      hx_set(\n        get = \"/content\",\n        trigger = \"load\",\n        target = \"#content\"\n      )\n  )\n}\n\n# ── Route fragment HTML ─────────────────\n#* @get /content\n#* @parser none\n#* @serializer html\nfunction() {\n  tags$p(\"Bonjour depuis le serveur !\")\n}\n\n\n\n\n\n\n\n\nAvertissement\n\n\nPour une app complexe, ce schéma ne suffit pas.\nUn équivalent de golem / rhino reste à imaginer pour standardiser modules, tests, déploiement.\n\n\n\n\n\n\nDeux types de routes dans tous tes apps htmxr :\n\nGET / — la page complète (hx_page + hx_head + structure) → serializer html\nGET /fragment — le fragment HTML qui se charge dynamiquement → serializer html (ou none si tagList)\n\nTu peux avoir N routes fragment. Chacune correspond à une zone dynamique de ta page.\nLe @parser none désactive le parsing automatique du body — pour les GET on n’en a pas besoin.\nSur le warning : Sois transparent sur le fait que l’organisation d’une “vraie” app n’est pas encore standardisée. C’est un sujet ouvert de l’écosystème. Pour l’instant, chacun trouve sa convention.\nL’idée d’un équivalent golem/rhino pour htmxr est notée dans la roadmap. Mentionner que c’est un appel à contributions implicite — si quelqu’un veut y travailler, c’est ouvert.\nCiter golem est aussi un clin d’œil à ThinkR (Colin et son équipe le maintiennent). Ça montre que tu connais leur écosystème et que tu n’es pas en croisade contre eux."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#lancer-lapi",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#lancer-lapi",
+    "title": "hyperverse",
+    "section": "Lancer l’API",
+    "text": "Lancer l’API\nlibrary(plumber2)\nlibrary(htmxr)\n\napi(\"api.R\") |&gt;\n  hx_serve_assets() |&gt;\n  (\\(pr) pr$ignite(block = TRUE))()\n\n\n\n\napi() → lit api.R et crée le routeur plumber2\nhx_serve_assets() → sert htmx.min.js comme asset statique\nignite() → démarre le serveur HTTP\n\n\n\n\n\n💡 Pour tester un exemple sans rien écrire :\nhx_run_example(\"infinity-scroll\")\n\n\n3 étapes pour lancer une app htmxr :\n\nplumber2::api() lit le fichier api.R et crée le routeur\nhx_serve_assets() ajoute la route /htmxr/assets/… qui sert htmx.min.js\npr$ignite() démarre le serveur sur le port par défaut (8080)\n\nPour les démos rapides : hx_run_example(“nom”) fait tout ça automatiquement avec un des exemples livrés dans le package.\nListe les exemples : hx_run_example() sans argument affiche les choix disponibles."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#on-code",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#on-code",
+    "title": "hyperverse",
+    "section": "On code ! 👨‍💻",
+    "text": "On code ! 👨‍💻"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#exercice-1",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#exercice-1",
+    "title": "hyperverse",
+    "section": "Exercice 1",
+    "text": "Exercice 1\nRécupérer les fichiers Gist :\n\napi.R\nrun_api.R\n\n\n\n\nTodo :\n🔲 Lancer l’API pour faire tourner l’application\n🐛 L’application se lance mais le slider ne réagit pas…\n\n\n🔲 Câbler le slider\nhx_slider_input(\n  id = \"bins\",\n  label = \"Number of bins:\",\n  value = 30,\n  min = 1,\n  max = 50,\n  get = \"???\",        # ← URL de l'endpoint à appeler\n  trigger = \"input changed delay:300ms\",\n  target = \"???\",     # ← sélecteur CSS de l'élément à mettre à jour\n  class = \"form-range\"\n)"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#pour-aller-plus-loin",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#pour-aller-plus-loin",
+    "title": "hyperverse",
+    "section": "Pour aller plus loin… 😜",
+    "text": "Pour aller plus loin… 😜\nReproduire :\nhx_run_example(\"select-input\")"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#htmxr-ne-force-aucun-framework-css",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#htmxr-ne-force-aucun-framework-css",
+    "title": "hyperverse",
+    "section": "htmxr ne force aucun framework CSS",
+    "text": "htmxr ne force aucun framework CSS\nDans hello/api.R :\nbootstrap_css &lt;- tags$link(\n  rel = \"stylesheet\",\n  href = \"https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css\",\n  ...\n)\n\nhx_page(\n  hx_head(\n    title = \"Old Faithful Geyser Data\",\n    bootstrap_css   # ← chargé à la main\n  ),\n  ...\n)\n\n💡 Commenter ces 4 lignes → l’app reste fonctionnelle, juste sans style.\n\n\nLe point clé : Bootstrap est chargé à la main via CDN, dans une variable qu’on injecte dans hx_head().\nC’est un choix conscient. Tu pourrais charger : - Pico CSS (classless, minimal) - DaisyUI (composants prêts) - Tailwind (utility-first) - Aucun CSS (juste du HTML brut)\nhtmxr ne te dit rien — c’est toi qui décides.\nPour comparer : un shinyApp() charge bslib + Bootstrap d’office. Tu ne peux pas y échapper sans bidouilles très techniques."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#shiny-vs-htmxr-le-head-rappel",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#shiny-vs-htmxr-le-head-rappel",
+    "title": "hyperverse",
+    "section": "Shiny vs htmxr : le <head> rappel",
+    "text": "Shiny vs htmxr : le &lt;head&gt; rappel\n\n\n\n\n\n\n\n\nÀ gauche : 2 dépendances (htmx.min.js + Bootstrap CSS).\nÀ droite : 13 dépendances dont la moitié… ne sont pas Bootstrap."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#le-coût-caché-de-shiny",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#le-coût-caché-de-shiny",
+    "title": "hyperverse",
+    "section": "Le coût caché de Shiny",
+    "text": "Le coût caché de Shiny\nShiny (et bslib) complète Bootstrap par-dessus.\n\n\nClasses spécifiques qu’on retrouve dans le DOM Shiny :\n&lt;div class=\"form-group shiny-input-container\"&gt;\n ...\n&lt;/div&gt;\n\n❌ shiny-input-container → inventions Shiny, pas Bootstrap.\n\n\n\n\n❌ .form-group → abandonné par Bootstrap 5, réinjecté par shiny pour rétro-compatibilité.\n.form-group {\n  margin-bottom: 1em;\n}\n🤔 Conséquence : la doc Bootstrap officielle ne correspond pas à ce que tu vois dans le DOM."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#la-voie-simple-htmxr.bootstrap",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#la-voie-simple-htmxr.bootstrap",
+    "title": "hyperverse",
+    "section": "La voie simple : htmxr.bootstrap",
+    "text": "La voie simple : htmxr.bootstrap"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#la-voie-simple-htmxr.bootstrap-1",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#la-voie-simple-htmxr.bootstrap-1",
+    "title": "hyperverse",
+    "section": "La voie simple : htmxr.bootstrap",
+    "text": "La voie simple : htmxr.bootstrap\napi(\"api.R\") |&gt;\n  hx_bs_serve_assets() |&gt;   # ← htmx.js + Bootstrap CSS/JS\n  (\\(pr) pr$ignite(block = TRUE))()\n\n#* @get /\n#* @serializer html\nfunction() {\n  hx_bs_page(            # ← injecte Bootstrap automatiquement\n    hx_bs_button(\"save\", \"Enregistrer\", post = \"/save\", target = \"#status\")\n  )\n}\n\n\n\n✅ Bootstrap pur : classes officielles, doc Bootstrap directement applicable\n\n\nExploration :\nhtmxr.bootstrap::hx_bs_run_example(\"hello\")\n\n\nhtmxr.bootstrap est la surcouche Bootstrap “pure” : - hx_bs_page() injecte Bootstrap automatiquement (CSS + JS) - hx_bs_serve_assets() sert htmx.js + Bootstrap\nL’avantage : pas de réécriture custom. Les classes sont 100% Bootstrap. Tu lis la doc Bootstrap, tu utilises les classes Bootstrap, ça marche.\nHonnêteté : le package est encore en dev, il y a des bugs notamment sur hx_bs_theme() (theming Sass). Les ThinkR seniors vont apprécier ta lucidité — mieux vaut le dire toi-même qu’eux le découvrent et te le reprochent en Q&A.\nL’objectif à terme : htmxr.bootstrap au CRAN, mature. Mais pas encore."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#avez-vous-remarqué",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#avez-vous-remarqué",
+    "title": "hyperverse",
+    "section": "Avez-vous remarqué ?",
+    "text": "Avez-vous remarqué ?\n🔗 hello.demo.hyperverse.world\n\nLa valeur du slider ne s’affiche pas à côté du curseur.\n\n\n💡 Comment l’afficher ?"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#option-naïve-roundtrip-serveur",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#option-naïve-roundtrip-serveur",
+    "title": "hyperverse",
+    "section": "Option naïve : roundtrip serveur",
+    "text": "Option naïve : roundtrip serveur\n#* @get /slider-value\n#* @query bins:integer(30)\n#* @serializer html\nfunction(query) {\n  tags$span(query$bins)\n}\n\n\n\n❌ 50 requêtes/seconde quand l’utilisateur bouge le slider.\n❌ Tout ça pour… afficher un nombre déjà connu côté client.\n\n\nOn pourrait câbler le slider pour qu’il appelle aussi /slider-value en plus de /plot, avec un target multi-swap sur deux zones.\nÇa marcherait. Mais c’est ABSURDE : - 50 req/sec pendant que le user bouge le slider - Charge serveur, charge réseau, batterie mobile - Le navigateur connaît déjà la valeur (c’est lui qui l’a) - On lui demande de la renvoyer au serveur pour qu’il la lui renvoie\nC’est un anti-pattern qu’on voit souvent quand on n’a que htmx comme outil."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#option-élégante-alpiner-alpine.js",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#option-élégante-alpiner-alpine.js",
+    "title": "hyperverse",
+    "section": "Option élégante : alpiner (Alpine.js)",
+    "text": "Option élégante : alpiner (Alpine.js)\nlibrary(alpiner)\nx_run_example(\"hello\")\n\n\n\n✅ Même app que tout à l’heure, avec la valeur du slider en live.\n✅ Zéro requête HTTP pour cet affichage : tout côté client.\n\n\nDémo en live : lance x_run_example(“hello”) dans ta console R avant la slide.\nTu projettes l’app à côté de tes slides. Bouge le slider — la valeur s’affiche instantanément, même quand tu bouges très vite. Aucune requête réseau.\nC’est le “wow” visuel : ils voient que c’est plus réactif que le hello d’avant, et tu vas leur montrer dans la slide suivante que c’est 3 lignes de code."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#les-3-lignes-magiques",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#les-3-lignes-magiques",
+    "title": "hyperverse",
+    "section": "Les 3 lignes magiques",
+    "text": "Les 3 lignes magiques\ntags$div(\n\n  hx_slider_input(\n    id = \"bins\",\n    ...,\n    `x-model.number` = \"bins\"           # ← 1. binding bidirectionnel\n  ),\n\n  tags$span() |&gt; x_set(text = \"bins\")   # ← 2. affichage réactif\n\n) |&gt; x_set(data = \"{ bins: 30 }\")       # ← 3. scope Alpine\n\n\n\n💡 x-model.number = binding bidirectionnel typé number.\nx_set(text = \"bins\") = le contenu du span suit bins.\nx_set(data = ...) = déclare le scope réactif Alpine.\n\n\nReviens sur la slide précédente après avoir montré la démo, et là tu décortiques.\nLes 3 ingrédients :\n\nx_set(data = “{ bins: 30 }”) sur le wrapper : déclare un scope Alpine avec une variable bins initialisée à 30.\nx-model.number sur l’input du slider : binding bidirectionnel. Quand l’utilisateur bouge, bins est mis à jour automatiquement (en number).\nx_set(text = “bins”) sur le span : le contenu du span suit la valeur de bins. Quand bins change, le span se met à jour.\n\nAucune requête au serveur. Aucune session R. Juste du JavaScript déclaratif.\nNote pédagogique pour les Shiny devs : c’est l’équivalent d’un observeEvent côté client, mais déclaratif et avec une syntaxe HTML. Pas besoin de JavaScript imperatif."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#la-règle-dor",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#la-règle-dor",
+    "title": "hyperverse",
+    "section": "La règle d’or",
+    "text": "La règle d’or\nhtmxr quand il faut un aller-retour serveur,\nalpiner quand c’est purement visuel / client.\n\n\n\n🔥 Trois packages, trois rôles :\n\nhtmxr → interactivité serveur (DOM ↔︎ R)\nalpiner → interactivité client (sans R)\nhtmxr.bootstrap (ou daisy, etc.) → composants stylés prêts à l’emploi\n\n\n\nC’est la slide à graver.\nTu peux la formuler au micro : “htmx quand il faut taper le serveur. Alpine quand c’est purement visuel.”\nLe triptyque htmxr + alpiner + htmxr.bootstrap est la composition idiomatique d’une app hyperverse complète.\nSi quelqu’un demande “et React/Vue ?” : tu réponds “hors-scope, ces frameworks proposent un autre paradigme (SPA stateful). Alpine est minimal, déclaratif, HTML-native — c’est le modèle qui rime avec htmx.”\nSi quelqu’un demande “et si j’ai besoin de plus que ce qu’Alpine fait ?” : tu réponds “tu peux toujours écrire du JS custom — htmxr et alpiner ne te l’interdisent pas. Mais Alpine couvre 90% des besoins client avec des directives lisibles.”"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#error-tracking-en-r",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#error-tracking-en-r",
+    "title": "hyperverse",
+    "section": "Error tracking en R",
+    "text": "Error tracking en R\n\n\nLe problème\n\n\nEn prod, stop(\"...\") génère un simpleError.\nTes logs : tout est simpleError.\nImpossible de filtrer, prioriser, alerter.\n\nLa solution\n\n\nGlitchTip : error tracking open source, self-hostable, compatible API Sentry.\nglitchtipr : le wrapper R (en dev).\n\n\n\n\nlibrary(glitchtipr)\n\ngt &lt;- gt_connect()  # reads GLITCHTIP_DSN — inactive if not set\n\n#* @capture\n#* @get /plot\n#* @parser none\n#* @serializer none\nfunction(request, query) {\n  generate_plot(query$bins %||% 30)\n}\n\n\nGlitchTip est open source (MIT) et auto-hébergeable. C’est l’alternative open source à Sentry. Compatible API Sentry, donc tu peux utiliser les SDK Sentry existants — c’est ce que glitchtipr fera côté R.\nStatut glitchtipr : encore au stade d’idée, pas encore publié. Mais le hello.demo a déjà une intégration custom qui démontre le pattern. C’est ce qu’on va voir en démo.\nLe point pédagogique majeur : stop(\"...\") nu crée un simpleError. En prod, tous tes incidents ont le même type, c’est ingérable. La discipline rlang::abort avec une class typée transforme l’observabilité R.\nTu peux mentionner que cette discipline est aussi utile sans GlitchTip — c’est juste de la bonne hygiène pour le développement R."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#démo-live",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#démo-live",
+    "title": "hyperverse",
+    "section": "Démo live",
+    "text": "Démo live\nhello.demo.hyperverse.world/plot?bins=a\n\n\n\n💥 Erreur côté serveur → remontée dans GlitchTip → visible dans la dashboard.\n\n\nAvant la slide : 1. Ouvre l’URL hello.demo.hyperverse.world/plot?bins=a dans le navigateur (ça génère une erreur car bins doit être un integer) 2. Ouvre la dashboard GlitchTip dans un autre onglet (glitchtip.breant.art)\nPendant la slide : 1. Tu projettes l’URL d’erreur, tu cliques 2. Tu montres le 500 retourné 3. Tu bascules sur GlitchTip 4. L’erreur apparaît dans la dashboard avec : - Le type d’erreur (avec class si tu as utilisé rlang::abort) - Le stacktrace - Le contexte (route, query, headers)\nPunchline à dire : “Dans 30 secondes, sur une vraie app en prod, vous savez ce qui s’est passé, où, et combien d’autres users en ont souffert. Sans grep dans les logs.”\nCaveat : tu peux mentionner que glitchtipr lui-même n’est pas encore publié. L’intégration que tu montres est artisanale dans le hello.demo, mais elle préfigure ce que sera le package."
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#on-en-parle",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#on-en-parle",
+    "title": "hyperverse",
+    "section": "On en parle…",
+    "text": "On en parle…\n\n\n\n\n\n\n\n\n\n\n\nIt’s a way to build apps with R differently. It’s not Shiny, and it’s not a framework. It doesn’t depend on any CSS framework, it doesn’t make choices when it comes to page structure or routing, and all logic lives in R. You’re in charge. Different philosophy 💭"
+  },
+  {
+    "objectID": "talks/mini-meetup-thinkr-mai-2026/index.html#hyperverse",
+    "href": "talks/mini-meetup-thinkr-mai-2026/index.html#hyperverse",
+    "title": "hyperverse",
+    "section": "Hyperverse",
+    "text": "Hyperverse\n📖 Documentation officielle : hyperverse.world"
+  },
+  {
+    "objectID": "why.html",
+    "href": "why.html",
+    "title": "Why hyperverse?",
+    "section": "",
+    "text": "hyperverse does not replace Shiny — it answers different questions."
+  },
+  {
+    "objectID": "why.html#shiny-the-reference",
+    "href": "why.html#shiny-the-reference",
+    "title": "Why hyperverse?",
+    "section": "Shiny: the reference",
+    "text": "Shiny: the reference\nBefore explaining what hyperverse is, it is worth appreciating what Shiny achieved.\nShiny democratized web application development for R users. It handles the browser-to-R communication invisibly, so data scientists can focus entirely on their analysis rather than web infrastructure. What Shiny does remarkably well:\n\nReactive programming — outputs update automatically when inputs change, through a dependency graph that Shiny manages for you\nR ↔︎ UI integration — widgets, interactive plots, tables — everything lives in R\nRapid prototyping — a few lines of code give you a working app\nEcosystem depth — hundreds of packages (shinydashboard, bslib, DT, plotly…) built specifically for Shiny\n\nShiny is the right tool for rich analytical dashboards, scientific interfaces, and internal data exploration tools."
+  },
+  {
+    "objectID": "why.html#different-problems-different-trade-offs",
+    "href": "why.html#different-problems-different-trade-offs",
+    "title": "Why hyperverse?",
+    "section": "Different problems, different trade-offs",
+    "text": "Different problems, different trade-offs\nShiny and hyperverse are built on fundamentally different communication models:\n\n\n\n\n\n\n\n\n\nShiny\nhyperverse\n\n\n\n\nCommunication\nWebSocket (persistent connection)\nHTTP (request/response)\n\n\nParadigm\nReactive graph\nExplicit HTTP requests\n\n\nUI updates\nShiny decides what to reload\nYou target the DOM precisely\n\n\nState\nR session per user\nDatabase or URL\n\n\nBackend\nR only\nAny HTTP server\n\n\n\nThe practical difference: in Shiny, your server reacts. In hyperverse, your browser asks.\nShiny maintains one R session per connected user. That session holds all the reactive state — inputs, outputs, intermediate computations — and Shiny decides when to re-evaluate which outputs. This model is powerful and ergonomic, but it means each user consumes a persistent R process.\nhyperverse apps are largely stateless. Each HTTP request is independent. The server computes something, returns an HTML fragment, and forgets. State lives in the database, the URL, or the client — not in a long-lived R session."
+  },
+  {
+    "objectID": "why.html#why-choose-hyperverse",
+    "href": "why.html#why-choose-hyperverse",
+    "title": "Why hyperverse?",
+    "section": "Why choose hyperverse?",
+    "text": "Why choose hyperverse?\n\nSurgical DOM updates\nShiny reloads entire output blocks (uiOutput, renderUI) — sometimes more than strictly necessary. htmx updates exactly the targeted element, nothing more. The result is smoother interfaces, less visual flicker, and a faster perceived experience.\n\n\nScalability and infrastructure cost\nShiny’s persistent session model means memory consumption scales linearly with the number of connected users. A pool of shared plumber2 workers handles far more concurrent users on the same hardware.\nDeployment is standard: nginx, Docker, any VPS, any cloud platform. No Shiny Server license required.\n\n\nNative HTTP: cache, load balancers, SEO\nhyperverse responses are plain HTML. This means:\n\nHTTP caching — identical requests can be served instantly from a cache layer\nHorizontal load balancing — no sticky sessions to manage, any worker can handle any request\nSearch engine indexability — content lives in the HTML, not generated client-side by JavaScript\n\n\n\nInteroperability\nhyperverse generates standard HTML backed by a standard HTTP API. The same plumber2 endpoints that serve your frontend can be consumed by mobile apps, other services, or scripts in any language — without translation or adaptation.\nThis is particularly valuable when a proof-of-concept built in R needs to grow into a production system: the business logic stays in R, while other parts of the stack can call the same endpoints."
+  },
+  {
+    "objectID": "why.html#when-to-use-each",
+    "href": "why.html#when-to-use-each",
+    "title": "Why hyperverse?",
+    "section": "When to use each",
+    "text": "When to use each\nChoose hyperverse when:\n\nPublic-facing apps with many concurrent users\nForms, CRUD interfaces, admin panels\nSEO and indexability matter\nStandard deployment (Docker, VPS, cloud)\nYou want to expose R logic to other services without rewriting it\n\nChoose Shiny when:\n\nRich analytical dashboards and scientific interfaces\nComplex reactive logic with many interdependent outputs\nRapid prototyping for internal data exploration\nDeep Shiny ecosystem integration (DT, plotly, bslib…)\nYou want R to own the full stack (no HTTP API needed)"
+  },
+  {
+    "objectID": "why.html#summary",
+    "href": "why.html#summary",
+    "title": "Why hyperverse?",
+    "section": "Summary",
+    "text": "Summary\nhyperverse is not a Shiny replacement. It is a different tool for different problems. If you need reactive, session-based dashboards in R, Shiny is the right choice. If you need scalable, HTTP-native apps that interoperate beyond R, hyperverse is the answer."
+  },
+  {
+    "objectID": "getting-started.html",
+    "href": "getting-started.html",
+    "title": "Get started",
+    "section": "",
+    "text": "htmx is a lightweight JavaScript library (~16kb) that lets any HTML element send HTTP requests — not just &lt;a&gt; and &lt;form&gt; tags.\nThe core philosophy is HTML over the wire: your server returns HTML fragments, not JSON. The browser swaps those fragments directly into the page without a full reload.\nhtmxr is the R wrapper: it provides htmltools-based primitives to generate htmx attributes and build complete pages, backed by a plumber2 server."
+  },
+  {
+    "objectID": "getting-started.html#what-is-hyperverse",
+    "href": "getting-started.html#what-is-hyperverse",
+    "title": "Get started",
+    "section": "",
+    "text": "htmx is a lightweight JavaScript library (~16kb) that lets any HTML element send HTTP requests — not just &lt;a&gt; and &lt;form&gt; tags.\nThe core philosophy is HTML over the wire: your server returns HTML fragments, not JSON. The browser swaps those fragments directly into the page without a full reload.\nhtmxr is the R wrapper: it provides htmltools-based primitives to generate htmx attributes and build complete pages, backed by a plumber2 server."
+  },
+  {
+    "objectID": "getting-started.html#installation",
+    "href": "getting-started.html#installation",
+    "title": "Get started",
+    "section": "Installation",
+    "text": "Installation\ninstall.packages(\"htmxr\")\n\n# development version\npak::pak(\"hyperverse-r/htmxr\")\nhtmxr uses plumber2 as its HTTP server — make sure it is installed alongside htmxr."
+  },
+  {
+    "objectID": "getting-started.html#how-htmx-works",
+    "href": "getting-started.html#how-htmx-works",
+    "title": "Get started",
+    "section": "How htmx works",
+    "text": "How htmx works\nEvery htmx interaction follows the same four-step cycle:\n\nUser triggers an event — a click, an input change, a page load, a form submission…\nhtmx sends an HTTP request to your server (GET or POST)\nYour server returns an HTML fragment — a snippet of HTML, not JSON\nhtmx swaps the fragment into the targeted DOM element\n\nYou control this cycle through five core attributes:\n\n\n\n\n\n\n\n\nAttribute\nhtmxr parameter\nWhat it does\n\n\n\n\nhx-get\nget = \"/url\"\nSend GET request on trigger\n\n\nhx-post\npost = \"/url\"\nSend POST request on trigger\n\n\nhx-target\ntarget = \"#id\"\nCSS selector of the element to update\n\n\nhx-swap\nswap = \"innerHTML\"\nHow to insert the response (innerHTML, outerHTML…)\n\n\nhx-trigger\ntrigger = \"click\"\nWhat triggers the request (click, change, load…)\n\n\n\nIn htmxr, these map directly to function parameters — no JavaScript to write."
+  },
+  {
+    "objectID": "getting-started.html#your-first-htmxr-app",
+    "href": "getting-started.html#your-first-htmxr-app",
+    "title": "Get started",
+    "section": "Your first htmxr app",
+    "text": "Your first htmxr app\nThe fastest way to see htmxr in action is to run the built-in hello example:\nlibrary(htmxr)\nhx_run_example(\"hello\")\nThis launches an Old Faithful histogram where a slider controls the number of bins. Let’s walk through how it works.\n\nThe page\nThe page is served by a GET / route. hx_page() wraps the full HTML document and injects the htmx script automatically. hx_head() handles the &lt;head&gt; tag.\nThe slider is built with hx_slider_input(). Three htmx parameters connect it to the server:\nhx_slider_input(\n  id = \"bins\",\n  label = \"Number of bins:\",\n  value = 30,\n  min = 1,\n  max = 50,\n  get = \"/plot\",                         # send GET /plot on trigger\n  trigger = \"input changed delay:300ms\", # trigger: input event, debounced 300ms\n  target = \"#plot\"                       # replace the content of #plot\n)\nThe plot container is a plain &lt;div&gt; with an id. hx_set() adds htmx attributes to it so the plot loads immediately on page load:\ntags$div(id = \"plot\") |&gt;\n  hx_set(\n    get = \"/plot\",\n    trigger = \"load\",       # fires once when the element is loaded\n    target = \"#plot\",\n    swap = \"innerHTML\"\n  )\n\n\nThe fragment endpoint\nThe /plot route returns an SVG string — an HTML fragment, not a full page:\n#* @get /plot\n#* @query bins:integer(30)\n#* @parser none\n#* @serializer none\nfunction(query) {\n  generate_plot(query$bins)\n}\nWhen the slider moves, htmxr sends GET /plot?bins=35. The server returns the SVG. htmx swaps it into #plot. No JavaScript, no JSON parsing, no manual DOM manipulation.\n\n\nThe htmx connection\nslider input event\n       │\n       ▼\nGET /plot?bins=35   ──►   server renders SVG\n                                   │\n                    ◄──────────────┘\n          htmx swaps SVG into #plot"
+  },
+  {
+    "objectID": "getting-started.html#anatomy-of-an-htmxr-project",
+    "href": "getting-started.html#anatomy-of-an-htmxr-project",
+    "title": "Get started",
+    "section": "Anatomy of an htmxr project",
+    "text": "Anatomy of an htmxr project\nA minimal htmxr app needs only two things:\napi.R — your plumber2 API with two kinds of routes:\n\nGET / — returns the full page (built with hx_page())\nGET /fragment — returns HTML fragments (one route per dynamic piece)\n\nhx_serve_assets() — registers the htmx JavaScript file as a static asset on your plumber2 router.\nlibrary(htmxr)\n\n#* @get /\n#* @serializer html\nfunction() {\n  hx_page(\n    hx_head(title = \"My app\"),\n    tags$div(id = \"content\") |&gt;\n      hx_set(\n        get = \"/content\",\n        trigger = \"load\",\n        target = \"#content\"\n      )\n  )\n}\n\n#* @get /content\n#* @serializer html\nfunction() {\n  tags$p(\"Hello from the server!\")\n}\nLaunch with:\npr &lt;- plumber2::api(\"api.R\") |&gt;\n  hx_serve_assets()\n\npr$ignite(port = 8080)"
+  },
+  {
+    "objectID": "getting-started.html#next-steps",
+    "href": "getting-started.html#next-steps",
+    "title": "Get started",
+    "section": "Next steps",
+    "text": "Next steps\nExplore more built-in examples:\nhx_run_example(\"select-input\")   # dynamic table filtering\nhx_run_example(\"lazy-load\")      # lazy loading pattern\nWhen you’re ready to add client-side logic without writing JavaScript, take a look at alpiner — the Alpine.js wrapper for the hyperverse ecosystem."
+  },
+  {
+    "objectID": "docs.html",
+    "href": "docs.html",
+    "title": "Docs",
+    "section": "",
+    "text": "Coming soon."
+  },
+  {
+    "objectID": "ecosystem.html",
+    "href": "ecosystem.html",
+    "title": "Hyperverse ecosystem",
+    "section": "",
+    "text": "Core R packages built and maintained under the hyperverse-r organization. They share the same design conventions, compose cleanly together, and are aimed at CRAN.\n\n\n\n    ↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.2.0\n  \n\n    ↗\n    lucidr\n    Lucide icons for R — embed beautiful and consistent SVG icons inline in any R web application, with no external dependency.\n    CRAN 0.1.0\n  \n\n    ↗\n    htmxr.bootstrap\n    Opinionated Bootstrap 5 layer on top of htmxr. Ready-to-use UI components with classes applied automatically.\n    In development\n  \n\n    \n    htmxr.daisy\n    Opinionated DaisyUI layer on top of htmxr. Modern, accessible components with a minimal footprint.\n    Planned\n  \n\n    ↗\n    alpiner\n    Alpine.js wrapper for R — local client-side reactivity, paired with htmxr for server-driven updates.\n    In development\n  \n\n    ↗\n    glitchtipr\n    GlitchTip client for R — error tracking and performance monitoring for your R applications.\n    In development"
+  },
+  {
+    "objectID": "ecosystem.html#hyperverse-packages",
+    "href": "ecosystem.html#hyperverse-packages",
+    "title": "Hyperverse ecosystem",
+    "section": "",
+    "text": "Core R packages built and maintained under the hyperverse-r organization. They share the same design conventions, compose cleanly together, and are aimed at CRAN.\n\n\n\n    ↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.2.0\n  \n\n    ↗\n    lucidr\n    Lucide icons for R — embed beautiful and consistent SVG icons inline in any R web application, with no external dependency.\n    CRAN 0.1.0\n  \n\n    ↗\n    htmxr.bootstrap\n    Opinionated Bootstrap 5 layer on top of htmxr. Ready-to-use UI components with classes applied automatically.\n    In development\n  \n\n    \n    htmxr.daisy\n    Opinionated DaisyUI layer on top of htmxr. Modern, accessible components with a minimal footprint.\n    Planned\n  \n\n    ↗\n    alpiner\n    Alpine.js wrapper for R — local client-side reactivity, paired with htmxr for server-driven updates.\n    In development\n  \n\n    ↗\n    glitchtipr\n    GlitchTip client for R — error tracking and performance monitoring for your R applications.\n    In development"
+  },
+  {
+    "objectID": "ecosystem.html#compatible-packages",
+    "href": "ecosystem.html#compatible-packages",
+    "title": "Hyperverse ecosystem",
+    "section": "Compatible packages",
+    "text": "Compatible packages\nThird-party R packages that aren’t part of the hyperverse-r organization but play well with the stack. Listed here so you can find them when you need them.\n\n\n\n    ↗\n    supabaseR\n    Supabase client for R — REST API, auth, and storage wrappers. Pairs naturally with htmxr / plumber2 endpoints.by @DeepanshKhurana\n    CRAN"
+  },
+  {
     "objectID": "glitchtipr.html",
     "href": "glitchtipr.html",
     "title": "Monitoring",
@@ -56,25 +539,11 @@
     "text": "Setup\nYou’ll need a GlitchTip instance — either self-hosted or the hosted version. Create a project, copy the DSN, and you’re ready.\nAdd your DSN to .Renviron (usethis::edit_r_environ()):\nGLITCHTIP_DSN=https://KEY@glitchtip.example.com/PROJECT_ID\nIf no DSN is set, gt_connect() returns an inactive connection and gt_capture() is a zero-overhead no-op — safe in development.\npak::pak(\"hyperverse-r/glitchtipr\")"
   },
   {
-    "objectID": "ecosystem.html",
-    "href": "ecosystem.html",
-    "title": "Hyperverse ecosystem",
+    "objectID": "talks.html",
+    "href": "talks.html",
+    "title": "Talks",
     "section": "",
-    "text": "Core R packages built and maintained under the hyperverse-r organization. They share the same design conventions, compose cleanly together, and are aimed at CRAN.\n\n\n\n    ↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.2.0\n  \n\n    ↗\n    lucidr\n    Lucide icons for R — embed beautiful and consistent SVG icons inline in any R web application, with no external dependency.\n    CRAN 0.1.0\n  \n\n    ↗\n    htmxr.bootstrap\n    Opinionated Bootstrap 5 layer on top of htmxr. Ready-to-use UI components with classes applied automatically.\n    In development\n  \n\n    \n    htmxr.daisy\n    Opinionated DaisyUI layer on top of htmxr. Modern, accessible components with a minimal footprint.\n    Planned\n  \n\n    ↗\n    alpiner\n    Alpine.js wrapper for R — local client-side reactivity, paired with htmxr for server-driven updates.\n    In development\n  \n\n    ↗\n    glitchtipr\n    GlitchTip client for R — error tracking and performance monitoring for your R applications.\n    In development"
-  },
-  {
-    "objectID": "ecosystem.html#hyperverse-packages",
-    "href": "ecosystem.html#hyperverse-packages",
-    "title": "Hyperverse ecosystem",
-    "section": "",
-    "text": "Core R packages built and maintained under the hyperverse-r organization. They share the same design conventions, compose cleanly together, and are aimed at CRAN.\n\n\n\n    ↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.2.0\n  \n\n    ↗\n    lucidr\n    Lucide icons for R — embed beautiful and consistent SVG icons inline in any R web application, with no external dependency.\n    CRAN 0.1.0\n  \n\n    ↗\n    htmxr.bootstrap\n    Opinionated Bootstrap 5 layer on top of htmxr. Ready-to-use UI components with classes applied automatically.\n    In development\n  \n\n    \n    htmxr.daisy\n    Opinionated DaisyUI layer on top of htmxr. Modern, accessible components with a minimal footprint.\n    Planned\n  \n\n    ↗\n    alpiner\n    Alpine.js wrapper for R — local client-side reactivity, paired with htmxr for server-driven updates.\n    In development\n  \n\n    ↗\n    glitchtipr\n    GlitchTip client for R — error tracking and performance monitoring for your R applications.\n    In development"
-  },
-  {
-    "objectID": "ecosystem.html#compatible-packages",
-    "href": "ecosystem.html#compatible-packages",
-    "title": "Hyperverse ecosystem",
-    "section": "Compatible packages",
-    "text": "Compatible packages\nThird-party R packages that aren’t part of the hyperverse-r organization but play well with the stack. Listed here so you can find them when you need them.\n\n\n\n    ↗\n    supabaseR\n    Supabase client for R — REST API, auth, and storage wrappers. Pairs naturally with htmxr / plumber2 endpoints.by @DeepanshKhurana\n    CRAN"
+    "text": "hyperverse\n\n\n\nhtmxr\n\nalpiner\n\nglitchtipr\n\nshiny\n\n\n\nPrésentation de l’écosystème hyperverse — htmxr, alpiner, glitchtipr — et de l’approche “web standard” pour faire des apps R.\n\n\n\n\n\nMay 29, 2026\n\n\nMini-meetup interne ThinkR\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -82,103 +551,5 @@
     "title": "hyperverse",
     "section": "",
     "text": "hyperverse\n\n\nA modular R ecosystem for building modern web applications, the web way.\n\nGet started →\n\n\n\n\n    ↗\n    htmxr\n    Core — htmx primitives and plumber2 integration. Build server-driven web apps without writing JavaScript.\n    CRAN 0.2.0\n  \n\n    ↗\n    lucidr\n    Lucide icons for R — embed beautiful and consistent SVG icons inline in any R web application, with no external dependency.\n    CRAN 0.1.0\n  \n\n    ↗\n    alpiner\n    Alpine.js wrapper for R — local client-side reactivity, paired with htmxr for server-driven updates.\n    In development\n  \n    Explore the ecosystem →"
-  },
-  {
-    "objectID": "why.html",
-    "href": "why.html",
-    "title": "Why hyperverse?",
-    "section": "",
-    "text": "hyperverse does not replace Shiny — it answers different questions."
-  },
-  {
-    "objectID": "why.html#shiny-the-reference",
-    "href": "why.html#shiny-the-reference",
-    "title": "Why hyperverse?",
-    "section": "Shiny: the reference",
-    "text": "Shiny: the reference\nBefore explaining what hyperverse is, it is worth appreciating what Shiny achieved.\nShiny democratized web application development for R users. It handles the browser-to-R communication invisibly, so data scientists can focus entirely on their analysis rather than web infrastructure. What Shiny does remarkably well:\n\nReactive programming — outputs update automatically when inputs change, through a dependency graph that Shiny manages for you\nR ↔︎ UI integration — widgets, interactive plots, tables — everything lives in R\nRapid prototyping — a few lines of code give you a working app\nEcosystem depth — hundreds of packages (shinydashboard, bslib, DT, plotly…) built specifically for Shiny\n\nShiny is the right tool for rich analytical dashboards, scientific interfaces, and internal data exploration tools."
-  },
-  {
-    "objectID": "why.html#different-problems-different-trade-offs",
-    "href": "why.html#different-problems-different-trade-offs",
-    "title": "Why hyperverse?",
-    "section": "Different problems, different trade-offs",
-    "text": "Different problems, different trade-offs\nShiny and hyperverse are built on fundamentally different communication models:\n\n\n\n\n\n\n\n\n\nShiny\nhyperverse\n\n\n\n\nCommunication\nWebSocket (persistent connection)\nHTTP (request/response)\n\n\nParadigm\nReactive graph\nExplicit HTTP requests\n\n\nUI updates\nShiny decides what to reload\nYou target the DOM precisely\n\n\nState\nR session per user\nDatabase or URL\n\n\nBackend\nR only\nAny HTTP server\n\n\n\nThe practical difference: in Shiny, your server reacts. In hyperverse, your browser asks.\nShiny maintains one R session per connected user. That session holds all the reactive state — inputs, outputs, intermediate computations — and Shiny decides when to re-evaluate which outputs. This model is powerful and ergonomic, but it means each user consumes a persistent R process.\nhyperverse apps are largely stateless. Each HTTP request is independent. The server computes something, returns an HTML fragment, and forgets. State lives in the database, the URL, or the client — not in a long-lived R session."
-  },
-  {
-    "objectID": "why.html#why-choose-hyperverse",
-    "href": "why.html#why-choose-hyperverse",
-    "title": "Why hyperverse?",
-    "section": "Why choose hyperverse?",
-    "text": "Why choose hyperverse?\n\nSurgical DOM updates\nShiny reloads entire output blocks (uiOutput, renderUI) — sometimes more than strictly necessary. htmx updates exactly the targeted element, nothing more. The result is smoother interfaces, less visual flicker, and a faster perceived experience.\n\n\nScalability and infrastructure cost\nShiny’s persistent session model means memory consumption scales linearly with the number of connected users. A pool of shared plumber2 workers handles far more concurrent users on the same hardware.\nDeployment is standard: nginx, Docker, any VPS, any cloud platform. No Shiny Server license required.\n\n\nNative HTTP: cache, load balancers, SEO\nhyperverse responses are plain HTML. This means:\n\nHTTP caching — identical requests can be served instantly from a cache layer\nHorizontal load balancing — no sticky sessions to manage, any worker can handle any request\nSearch engine indexability — content lives in the HTML, not generated client-side by JavaScript\n\n\n\nInteroperability\nhyperverse generates standard HTML backed by a standard HTTP API. The same plumber2 endpoints that serve your frontend can be consumed by mobile apps, other services, or scripts in any language — without translation or adaptation.\nThis is particularly valuable when a proof-of-concept built in R needs to grow into a production system: the business logic stays in R, while other parts of the stack can call the same endpoints."
-  },
-  {
-    "objectID": "why.html#when-to-use-each",
-    "href": "why.html#when-to-use-each",
-    "title": "Why hyperverse?",
-    "section": "When to use each",
-    "text": "When to use each\nChoose hyperverse when:\n\nPublic-facing apps with many concurrent users\nForms, CRUD interfaces, admin panels\nSEO and indexability matter\nStandard deployment (Docker, VPS, cloud)\nYou want to expose R logic to other services without rewriting it\n\nChoose Shiny when:\n\nRich analytical dashboards and scientific interfaces\nComplex reactive logic with many interdependent outputs\nRapid prototyping for internal data exploration\nDeep Shiny ecosystem integration (DT, plotly, bslib…)\nYou want R to own the full stack (no HTTP API needed)"
-  },
-  {
-    "objectID": "why.html#summary",
-    "href": "why.html#summary",
-    "title": "Why hyperverse?",
-    "section": "Summary",
-    "text": "Summary\nhyperverse is not a Shiny replacement. It is a different tool for different problems. If you need reactive, session-based dashboards in R, Shiny is the right choice. If you need scalable, HTTP-native apps that interoperate beyond R, hyperverse is the answer."
-  },
-  {
-    "objectID": "docs.html",
-    "href": "docs.html",
-    "title": "Docs",
-    "section": "",
-    "text": "Coming soon."
-  },
-  {
-    "objectID": "getting-started.html",
-    "href": "getting-started.html",
-    "title": "Get started",
-    "section": "",
-    "text": "htmx is a lightweight JavaScript library (~16kb) that lets any HTML element send HTTP requests — not just &lt;a&gt; and &lt;form&gt; tags.\nThe core philosophy is HTML over the wire: your server returns HTML fragments, not JSON. The browser swaps those fragments directly into the page without a full reload.\nhtmxr is the R wrapper: it provides htmltools-based primitives to generate htmx attributes and build complete pages, backed by a plumber2 server."
-  },
-  {
-    "objectID": "getting-started.html#what-is-hyperverse",
-    "href": "getting-started.html#what-is-hyperverse",
-    "title": "Get started",
-    "section": "",
-    "text": "htmx is a lightweight JavaScript library (~16kb) that lets any HTML element send HTTP requests — not just &lt;a&gt; and &lt;form&gt; tags.\nThe core philosophy is HTML over the wire: your server returns HTML fragments, not JSON. The browser swaps those fragments directly into the page without a full reload.\nhtmxr is the R wrapper: it provides htmltools-based primitives to generate htmx attributes and build complete pages, backed by a plumber2 server."
-  },
-  {
-    "objectID": "getting-started.html#installation",
-    "href": "getting-started.html#installation",
-    "title": "Get started",
-    "section": "Installation",
-    "text": "Installation\ninstall.packages(\"htmxr\")\n\n# development version\npak::pak(\"hyperverse-r/htmxr\")\nhtmxr uses plumber2 as its HTTP server — make sure it is installed alongside htmxr."
-  },
-  {
-    "objectID": "getting-started.html#how-htmx-works",
-    "href": "getting-started.html#how-htmx-works",
-    "title": "Get started",
-    "section": "How htmx works",
-    "text": "How htmx works\nEvery htmx interaction follows the same four-step cycle:\n\nUser triggers an event — a click, an input change, a page load, a form submission…\nhtmx sends an HTTP request to your server (GET or POST)\nYour server returns an HTML fragment — a snippet of HTML, not JSON\nhtmx swaps the fragment into the targeted DOM element\n\nYou control this cycle through five core attributes:\n\n\n\n\n\n\n\n\nAttribute\nhtmxr parameter\nWhat it does\n\n\n\n\nhx-get\nget = \"/url\"\nSend GET request on trigger\n\n\nhx-post\npost = \"/url\"\nSend POST request on trigger\n\n\nhx-target\ntarget = \"#id\"\nCSS selector of the element to update\n\n\nhx-swap\nswap = \"innerHTML\"\nHow to insert the response (innerHTML, outerHTML…)\n\n\nhx-trigger\ntrigger = \"click\"\nWhat triggers the request (click, change, load…)\n\n\n\nIn htmxr, these map directly to function parameters — no JavaScript to write."
-  },
-  {
-    "objectID": "getting-started.html#your-first-htmxr-app",
-    "href": "getting-started.html#your-first-htmxr-app",
-    "title": "Get started",
-    "section": "Your first htmxr app",
-    "text": "Your first htmxr app\nThe fastest way to see htmxr in action is to run the built-in hello example:\nlibrary(htmxr)\nhx_run_example(\"hello\")\nThis launches an Old Faithful histogram where a slider controls the number of bins. Let’s walk through how it works.\n\nThe page\nThe page is served by a GET / route. hx_page() wraps the full HTML document and injects the htmx script automatically. hx_head() handles the &lt;head&gt; tag.\nThe slider is built with hx_slider_input(). Three htmx parameters connect it to the server:\nhx_slider_input(\n  id = \"bins\",\n  label = \"Number of bins:\",\n  value = 30,\n  min = 1,\n  max = 50,\n  get = \"/plot\",                         # send GET /plot on trigger\n  trigger = \"input changed delay:300ms\", # trigger: input event, debounced 300ms\n  target = \"#plot\"                       # replace the content of #plot\n)\nThe plot container is a plain &lt;div&gt; with an id. hx_set() adds htmx attributes to it so the plot loads immediately on page load:\ntags$div(id = \"plot\") |&gt;\n  hx_set(\n    get = \"/plot\",\n    trigger = \"load\",       # fires once when the element is loaded\n    target = \"#plot\",\n    swap = \"innerHTML\"\n  )\n\n\nThe fragment endpoint\nThe /plot route returns an SVG string — an HTML fragment, not a full page:\n#* @get /plot\n#* @query bins:integer(30)\n#* @parser none\n#* @serializer none\nfunction(query) {\n  generate_plot(query$bins)\n}\nWhen the slider moves, htmxr sends GET /plot?bins=35. The server returns the SVG. htmx swaps it into #plot. No JavaScript, no JSON parsing, no manual DOM manipulation.\n\n\nThe htmx connection\nslider input event\n       │\n       ▼\nGET /plot?bins=35   ──►   server renders SVG\n                                   │\n                    ◄──────────────┘\n          htmx swaps SVG into #plot"
-  },
-  {
-    "objectID": "getting-started.html#anatomy-of-an-htmxr-project",
-    "href": "getting-started.html#anatomy-of-an-htmxr-project",
-    "title": "Get started",
-    "section": "Anatomy of an htmxr project",
-    "text": "Anatomy of an htmxr project\nA minimal htmxr app needs only two things:\napi.R — your plumber2 API with two kinds of routes:\n\nGET / — returns the full page (built with hx_page())\nGET /fragment — returns HTML fragments (one route per dynamic piece)\n\nhx_serve_assets() — registers the htmx JavaScript file as a static asset on your plumber2 router.\nlibrary(htmxr)\n\n#* @get /\n#* @serializer html\nfunction() {\n  hx_page(\n    hx_head(title = \"My app\"),\n    tags$div(id = \"content\") |&gt;\n      hx_set(\n        get = \"/content\",\n        trigger = \"load\",\n        target = \"#content\"\n      )\n  )\n}\n\n#* @get /content\n#* @serializer html\nfunction() {\n  tags$p(\"Hello from the server!\")\n}\nLaunch with:\npr &lt;- plumber2::api(\"api.R\") |&gt;\n  hx_serve_assets()\n\npr$ignite(port = 8080)"
-  },
-  {
-    "objectID": "getting-started.html#next-steps",
-    "href": "getting-started.html#next-steps",
-    "title": "Get started",
-    "section": "Next steps",
-    "text": "Next steps\nExplore more built-in examples:\nhx_run_example(\"select-input\")   # dynamic table filtering\nhx_run_example(\"lazy-load\")      # lazy loading pattern\nWhen you’re ready to add client-side logic without writing JavaScript, take a look at alpiner — the Alpine.js wrapper for the hyperverse ecosystem."
   }
 ]
