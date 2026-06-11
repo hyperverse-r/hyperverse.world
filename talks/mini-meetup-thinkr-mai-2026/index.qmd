@@ -1,5 +1,5 @@
 ---
-title: "hyperverse"
+title: "Hyperverse"
 subtitle: "Écosystème R modulaire pour développer des applications modernes, à la manière du web."
 author: "Arthur Bréant"
 date: 2026-05-29
