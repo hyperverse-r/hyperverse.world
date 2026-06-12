@@ -3,3 +3,4 @@ _site/
 notes-*.md
 
 **/*.quarto_ipynb
+talks/*/capture/

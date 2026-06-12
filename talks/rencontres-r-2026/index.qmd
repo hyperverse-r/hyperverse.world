@@ -1,0 +1,948 @@
+---
+title: "hyperverse"
+subtitle: "Faire du web depuis R, le web comme il a été conçu."
+author: "Arthur Bréant"
+date: 2026-06-17
+event: "Rencontres R 2026 — Nantes"
+description: "Découverte de l'écosystème hyperverse — htmxr, plumber2, alpiner, glitchtipr — présentée dans la session « Production »."
+categories: [htmxr, plumber2, shiny, http, production]
+image: img/intro_htmxr_hello.png
+include-after-body: reset-videos.html
+resources:
+  - img/*.webm
+  - reset-videos.html
+---
+
+# Prologue
+
+##  {.center}
+
+::: {.r-fit-text}
+**_"Ce que tu fais avec Shiny,
+ce n'est pas du vrai web."_**
+:::
+
+::: {.fragment .attribution}
+Mon ancien patron
+:::
+
+::: notes
+Quand j'ai commencé R, avant ThinkR, mon patron m'a dit un jour :
+'ce que tu fais avec Shiny, ce n'est pas du vrai web'.
+
+J'étais vexé. Je faisais des apps, elles tournaient dans un navigateur, des gens
+les utilisaient : c'était quoi son problème ?
+:::
+
+## Quelques années plus tard... {.center}
+
+::: {.fragment}
+Il n'avait pas complètement tort.
+:::
+
+::: {.fragment}
+Mais pas complètement raison non plus.
+:::
+
+::: notes
+Shiny est légitime, c'est ce qui m'a appris à coder interactif.
+
+Mais Shiny ne fait pas du web au sens où le web a été conçu.
+C'est une app desktop qui s'exécute dans un browser, avec R comme moteur.
+
+Aujourd'hui je vous montre une autre façon — pas mieux, différente.
+:::
+
+## Le déclic {.center}
+
+::: {.fragment}
+La _release_ de [`{plumber2}`](https://plumber2.posit.co/){target="_blank"} sur le CRAN.
+:::
+
+\
+
+::: {.fragment}
+&#x1F525; Un serveur HTTP moderne pour R : routes, async, sérialisation, ...
+:::
+
+::: notes
+Le déclic, c'est `plumber2` sur le CRAN à l'automne 2025.
+
+C'est le paquet qui permet de faire du web "comme on l'entend" depuis R, avec
+des requêtes HTTP standards et plein de fonctionnalités modernes : async,
+middleware, sérialisation propre.
+
+Sans plumber2, hyperverse ne tient pas.
+:::
+
+##  {.center}
+
+::: {.r-fit-text}
+_Faire du web depuis R,
+le web comme il a été conçu._
+:::
+
+::: notes
+Cette présentation est l'introduction à un écosystème naissant : `hyperverse`.
+
+Une façon qui s'appuie sur les standards web : HTTP, HTML, composants natifs
+du navigateur.
+
+On va voir ce que ça change — d'abord côté mécanique, puis côté arguments,
+puis côté code.
+:::
+
+# hyperverse
+
+## hyperverse {.center}
+
+> _Un écosystème de packages R pour construire des apps web modernes,
+> à la manière du web._
+
+\
+
+::: {.fragment}
+&#x1F525; **Pas un remplacement de Shiny, juste une autre approche.**
+:::
+
+::: notes
+Phrase officielle du site : a modular R ecosystem for building modern web
+applications, the web way.
+
+Et un cadrage qui me tient à cœur : on ne remplace pas Shiny. Shiny reste
+légitime pour les dashboards analytiques, les prototypes, l'écosystème
+spécifique (DT, plotly, bslib...). hyperverse répond à d'autres questions.
+:::
+
+## La stack en un coup d'œil
+
+::: {.columns}
+::: {.column width="55%"}
+&#x1F4E6; **`htmxr`** &#x2192; interactivité **serveur** via HTTP
+
+::: {.fragment}
+&#x1F4E6; **`alpiner`** &#x2192; interactivité **client** pure
+:::
+
+::: {.fragment}
+&#x1F4E6; **`htmxr.bootstrap`** &#x2192; composants stylés
+:::
+
+::: {.fragment}
+&#x1F4E6; **`glitchtipr`** &#x2192; monitoring d'erreurs
+:::
+:::
+::: {.column width="45%"}
+::: {.fragment}
+\
+
+_Aujourd'hui, focus sur **`htmxr`** : la pièce centrale._
+:::
+:::
+:::
+
+::: notes
+Quatre paquets, quatre rôles distincts. On les recroisera tous en fin de talk.
+
+Mais l'objet principal de la présentation, c'est `htmxr` — le cœur de
+l'écosystème. Le reste est complémentaire, et on l'évoquera brièvement
+à la fin.
+:::
+
+## htmxr {.center}
+
+> _Le pont entre **htmx** (lib JS, attributs HTML)
+> et **plumber2** (serveur HTTP R)._
+
+\
+
+::: {.fragment}
+&#x1F525; Tu écris du **R** : `htmxr` génère du **HTML** avec les attributs **htmx** que le navigateur sait lire.
+:::
+
+::: notes
+htmx est une lib JavaScript qui ajoute de l'interactivité via des attributs
+HTML : hx-get, hx-post, hx-target, hx-swap, hx-trigger. Tu ne touches pas
+à JavaScript toi-même.
+
+plumber2, c'est le serveur HTTP moderne pour R évoqué tout à l'heure.
+
+htmxr = la couche R qui produit le HTML avec les bons attributs htmx,
+branché sur des routes plumber2.
+
+Tu écris du R, ça marche dans le navigateur. Sans écrire une ligne de JS.
+:::
+
+# Les deux mécaniques
+
+## Comment `Shiny` communique
+
+```{mermaid}
+%%| echo: false
+%%| fig-align: center
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Lato, system-ui, sans-serif",
+    "background": "#f8f8f8",
+    "primaryColor": "#1a1a1a",
+    "primaryTextColor": "#f8f8f8",
+    "primaryBorderColor": "#1a1a1a",
+    "lineColor": "#2d2d2d",
+    "actorBkg": "#1a1a1a",
+    "actorBorder": "#1a1a1a",
+    "actorTextColor": "#f8f8f8",
+    "actorLineColor": "#2d2d2d",
+    "signalColor": "#2d2d2d",
+    "signalTextColor": "#2d2d2d",
+    "noteBkgColor": "#ffffff",
+    "noteTextColor": "#2d2d2d",
+    "noteBorderColor": "#4a6cf7",
+    "sequenceNumberColor": "#f8f8f8"
+  }
+}}%%
+sequenceDiagram
+    autonumber
+    participant N as Navigateur
+    participant S as Serveur R (Shiny)
+    Note over N,S: WebSocket persistant
+    Note over S: Session R dédiée
+    N->>+S: input$bins = X
+    Note right of S: invalide les dépendances<br/>recalcule ce qu'il faut
+    S-->>-N: output$plot = <PNG>
+    Note over N: Shiny met à jour l'élément<br/>lié à output$plot
+```
+
+::: {.fragment}
+&#x1F525; Le serveur **garde le tuyau ouvert**.
+:::
+
+::: notes
+Shiny ouvre une connexion WebSocket dès le chargement et la garde ouverte.
+Chaque user qui se connecte = un process R dédié côté serveur.
+
+Quand l'utilisateur bouge un input, Shiny envoie la valeur via le WebSocket.
+Le graphe réactif identifie ce qui doit être recalculé. R recalcule, encode
+le résultat (souvent un PNG en base64), renvoie via WS. Shiny.js met à jour
+le DOM.
+
+C'est un modèle "push" : le serveur orchestre, décide, envoie.
+:::
+
+## Comment `htmxr` communique
+
+```{mermaid}
+%%| echo: false
+%%| fig-align: center
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Lato, system-ui, sans-serif",
+    "background": "#f8f8f8",
+    "primaryColor": "#1a1a1a",
+    "primaryTextColor": "#f8f8f8",
+    "primaryBorderColor": "#1a1a1a",
+    "lineColor": "#2d2d2d",
+    "actorBkg": "#1a1a1a",
+    "actorBorder": "#1a1a1a",
+    "actorTextColor": "#f8f8f8",
+    "actorLineColor": "#2d2d2d",
+    "signalColor": "#2d2d2d",
+    "signalTextColor": "#2d2d2d",
+    "noteBkgColor": "#ffffff",
+    "noteTextColor": "#2d2d2d",
+    "noteBorderColor": "#4a6cf7",
+    "sequenceNumberColor": "#f8f8f8"
+  }
+}}%%
+sequenceDiagram
+    autonumber
+    participant N as Navigateur
+    participant S as Serveur R (plumber2 + htmxr)
+    N->>+S: GET /plot?bins=X
+    Note right of S: exécute la route<br/>génère le HTML
+    S-->>-N: <svg>...</svg>
+    Note over N: htmx swap le SVG dans #35;plot
+```
+
+::: {.fragment}
+&#x1F525; Le navigateur **demande**, R **répond**. Pas de tuyau, pas de session R.
+:::
+
+::: notes
+Le navigateur fait une requête HTTP standard, R répond du HTML, htmx insère
+le fragment dans la page.
+
+Pas de connexion persistante. Pas de process R par user.
+Le serveur ne porte aucun état entre deux requêtes — c'est le client qui pilote.
+
+C'est un modèle "pull" : le navigateur prend l'initiative.
+:::
+
+## Une phrase à retenir {.center}
+
+### En `Shiny`, le serveur **réagit**,
+
+### En `htmxr`, le navigateur **demande**.
+
+::: notes
+C'est LA phrase à graver. À répéter au micro.
+
+Cette inversion d'initiative change tout :
+- qui porte la complexité (serveur en Shiny, client en htmxr)
+- comment ça scale (sessions vs requêtes)
+- ce qu'on peut faire avec (apps internes vs apps publiques)
+:::
+
+# La démo
+
+&#x1F517; [hello.demo.hyperverse.world](https://hello.demo.hyperverse.world/){target="_blank"}
+
+::: notes
+L'app hello classique (vieux fidèle d'Old Faithful) servie par plumber2 + htmxr,
+sur mon VPS OVH. C'est ce qu'on va regarder pendant la démo.
+:::
+
+##  {.center}
+
+<video src="img/rr2026-loading-compare.webm" autoplay loop muted playsinline style="width:100%"></video>
+
+::: notes
+Vidéo côte-à-côte capturée avec Playwright : même VPS, même hardware, départ
+synchronisé. htmxr à gauche, Shiny (via Shinyproxy) à droite. Laisser tourner
+la boucle 5–8 secondes, ne pas commenter pendant — laisser voir.
+:::
+
+## Plutôt _rapide_, hein ? &#x1F60F; {.center}
+
+## Le banc d'essai
+
+::: {.columns .center}
+::: {.column width="50%"}
+`htmxr`
+
+──────────────────────
+
+&#x1F517; [hello.demo.hyperverse.world](https://hello.demo.hyperverse.world/){target="_blank"}
+
+:::
+::: {.column width="50%"}
+`Shiny` _via Shinyproxy_
+
+─────────────────────
+
+&#x1F517; [open-apps.breant.art/app/hello-shiny](https://open-apps.breant.art/app/hello-shiny){target="_blank"}
+
+
+:::
+:::
+
+\
+
+&#x1F525; **Même VPS OVH, même hardware**, pour rendre la comparaison juste.
+
+::: {.fragment .smaller}
+\
+
+_Pour info, l'app `Shiny` tourne aussi sur Posit Connect :_
+&#x1F517; [connect.thinkr.fr/hello-shiny](https://connect.thinkr.fr/hello-shiny/){target="_blank"} _(infra différente, hors chrono)._
+:::
+
+::: notes
+On ne compare pas un VPS perso à un cluster managé Connect, ce serait malhonnête.
+La comparaison principale, c'est Shinyproxy vs htmxr, deux containers sur le même
+VPS-1 OVH. Connect est mentionné pour ceux qui se demanderaient "et avec un vrai
+déploiement pro, ça donnerait quoi ?".
+:::
+
+## Chargement initial
+
+::: {.smaller}
+_Temps d'attente avant que le plot soit visible dans le DOM._
+:::
+
+::: {.columns .center}
+::: {.column width="50%"}
+`htmxr`
+
+──────────────────────
+
+&#x1F525; **0.3s**
+:::
+::: {.column width="50%"}
+`Shiny` _via Shinyproxy_
+
+─────────────────────
+
+&#x1F525; **0.9s**
+:::
+:::
+
+::: notes
+Protocole :
+
+1. Warmup : 1 chargement de la page avant la mesure → cache navigateur amorcé
+   (Bootstrap CDN, assets Shiny, etc.)
+2. Mesure : 5 runs, médiane (pas la moyenne — robuste aux outliers)
+
+Résultats bruts :
+
+  Run    htmxr (ms)  Shiny (ms)
+  1      296         1200
+  2      294         891
+  3      252         974
+  4      234         934
+  5      321         871
+  Médiane 294        934
+
+La comparaison principale, c'est Shinyproxy (même VPS, même infra que htmxr).
+Le lien Connect est là pour montrer une alternative de déploiement professionnel,
+mais on ne le bench pas — l'infra n'est pas comparable.
+:::
+
+## Interaction slider
+
+::: {.smaller}
+_Ce qui se passe quand on bouge le slider, étape par étape._
+:::
+
+::: {.columns .center}
+::: {.column width="50%"}
+`htmxr`
+
+──────────────────────
+
+&#x1F525; _Quasi instantané_
+
+- `GET /plot?bins=X`
+- R génère un SVG en ~12 ms
+- htmx swap dans le DOM
+
+&#x2192; Trois étapes, toutes standard.
+:::
+::: {.column width="50%"}
+`Shiny` _via Shinyproxy_
+
+─────────────────────
+
+&#x1F525; _Micro délai_
+
+- nouvelle valeur via WebSocket
+- invalidation du graphe réactif
+- recalcul
+- rendu PNG, encodage base64
+- retour via WS
+- update DOM
+
+&#x2192; Sept étapes, dont plusieurs spécifiques à `Shiny`.
+:::
+:::
+
+::: notes
+Le micro-délai côté Shiny n'est pas "lent" en absolu — c'est la conséquence
+directe du chemin parcouru.
+
+Mon bench ne me donne pas le chiffre côté Shiny — hey ne mesure pas le WebSocket.
+:::
+
+## Poids client
+
+::: {.columns}
+::: {.column width="55%"}
+![](img/minimeetup-dom-compare.png){.lightbox}
+:::
+::: {.column width="45%"}
+_Pourquoi ces différences ?_
+
+&#x2192; **Deps JS/CSS : 2 vs 13**
+
+\
+
+::: {.fragment}
+&#x1F4E6; `htmxr` : 30 lignes de HTML, **2 deps** (htmx.js + Bootstrap).
+
+\
+
+&#x1F4E6; `Shiny` : 48 lignes, **13 deps** (jQuery, shiny.js, ionRangeSlider, bs3compat, ...).
+:::
+:::
+:::
+
+::: notes
+La philosophie web standard : utiliser ce que le navigateur sait déjà faire.
+
+Shiny a fait le choix opposé — réécrire les composants en JS pour avoir un
+contrôle fin (ionRangeSlider remplace l'input range natif, bs3compat gère
+la rétrocompatibilité Bootstrap 3, etc.).
+
+Les deux choix sont défendables. Mais on voit visuellement pourquoi le poids
+et la vitesse divergent.
+:::
+
+## _rapide et économique_, vraiment ? &#x1F914; {.center}
+
+::: notes
+Transition vers les arguments. La vitesse est un effet, pas la cause.
+
+La cause, c'est l'architecture. Et l'effet le plus important pour le créneau
+"Production", c'est la facture.
+:::
+
+## #1 HTTP est **stateless** par design
+
+::: {.columns}
+::: {.column width="50%"}
+`htmxr` (stateless HTTP)
+──────────────────────
+
+1 process R partagé
+
+RAM &#x267E;&#xFE0F; requêtes actives
+
+User inactif = **gratuit**
+:::
+::: {.column width="50%"}
+`Shiny` (stateful WS)
+─────────────────────
+
+1 session R par user
+
+RAM &#x267E;&#xFE0F; users connectés
+
+User inactif = **coûte**
+:::
+:::
+
+\
+
+::: {.fragment}
+&#x1F525; On paie le **travail réel**, pas les sessions inactives.
+:::
+
+::: notes
+Petit rappel de vocabulaire avant d'attaquer :
+
+- **Stateful** = le serveur garde un état entre les échanges. Il se souvient
+  de qui tu es, de ce que tu as cliqué, de la valeur de tes inputs. En
+  contrepartie, il alloue de la mémoire à chaque user connecté, même inactif.
+  C'est le modèle Shiny : un process R dédié par session, qui vit tant que
+  l'onglet est ouvert.
+
+- **Stateless** = le serveur ne se souvient de rien entre deux requêtes.
+  Chaque requête HTTP est autonome, elle porte elle-même tout ce qu'il faut
+  pour être traitée (URL, query params, cookies, body). Le serveur traite,
+  répond, oublie. C'est le modèle HTTP, donc htmxr/plumber2 : un pool de
+  workers R partagés, qui répondent à la volée sans rien retenir.
+
+Conséquence directe sur la slide :
+
+- Stateful (Shiny) : la RAM grandit avec le nombre d'utilisateurs **connectés**,
+  même s'ils ne font rien. Un user qui idle = une session R qui occupe la
+  mémoire pour rien.
+
+- Stateless (htmxr) : la RAM grandit avec le nombre de requêtes **en cours**.
+  Un user qui idle = zéro requête en vol = zéro mémoire occupée.
+
+Une requête en cours = de la mémoire. Un user qui idle sur sa page = gratuit.
+
+Shiny fait l'inverse : chaque user connecté pinne une session R en mémoire,
+même s'il regarde son téléphone pendant 10 minutes.
+:::
+
+## #2 La facture OVH
+
+**À hardware égal** (VPS-1 OVH, 6.62 € TTC/mois) :
+
+| | Architecture | Capacité |
+|---|---|---|
+| **`htmxr`** | 1 process partagé | **1000+** users |
+| **`Shiny`** _via Shinyproxy_ | 1 container / user | ~20 users |
+
+\
+
+::: {.fragment}
+**À charge égale** (500 utilisateurs actifs) :
+
+| | Infrastructure | Coût |
+|---|---|---|
+| **`htmxr`** | VPS-1 OVH | **6.62 € TTC/mois** |
+| **`Shiny`** _via Shinyproxy_ | dédié RISE-1 64 GB | **~78 € HT/mois** |
+
+&#x1F525; **~12× sur la facture, pour la même charge utilisateur.**
+:::
+
+::: notes
+Deux temps au micro :
+
+1. Le constat brut côté capacité — sur le même hardware, l'écart est de ~50×.
+   ~20 users Shiny en simultané (1 container/user via Shinyproxy) vs 1000+
+   users htmxr (1 process partagé).
+
+2. Le fragment : à 500 users actifs, tu passes d'un dédié RISE-1 64 GB à 78 € HT
+   à un VPS-1 à 6 € TTC. ~12× sur la facture, même charge utilisateur.
+
+À nuancer : Shiny offre des choses qu'htmxr n'offre pas (notamment la réactivité
+fine-grained). Mais pour une app avec beaucoup d'utilisateurs et peu de calculs
+lourds, la balance penche fortement vers htmxr.
+:::
+
+## #3 Interopérabilité : une seule API
+
+&#x1F517; [hello.demo.hyperverse.world/plot?bins=20](https://hello.demo.hyperverse.world/plot?bins=20){target="_blank"}
+
+→ Cette URL renvoie **directement le SVG**.
+
+Browser, `curl`, Python, autre app R, webhook. N'importe quel client HTTP.
+
+\
+
+::: {.fragment}
+Le pattern : **même donnée, deux sérialiseurs.**
+
+```r
+#* @get /api/rows                  #* @get /rows
+#* @serializer json                #* @serializer html
+function() diamond_data()          function() hx_table_rows(diamond_data())
+#  ← curl, Python, JS              #  ← navigateur via htmx
+```
+
+&#x1F525; **Même backend, deux clients.**
+:::
+
+\
+
+::: {.fragment}
+&#x274C; Avec `Shiny`, une app n'est consommable **que** par un navigateur qui fait tourner Shiny.
+:::
+
+::: notes
+Trois temps :
+
+1. L'URL live. Tu peux la coller dans n'importe quoi qui parle HTTP — tu reçois
+   le SVG, point. Pas d'app shell, pas de WebSocket, pas de session R. C'est
+   juste une route plumber2 sérialisée en SVG. La preuve la plus directe de
+   l'interopérabilité.
+
+2. Le fragment code. Tu écris ta logique métier une fois, tu la sers dans le
+   format qui convient à chaque client. Pour les data clients (curl, Python),
+   tu sérialises en JSON ; pour le navigateur via htmx, tu sérialises en HTML
+   (ou SVG). Même backend, deux clients.
+
+3. La punchline Shiny. Une app Shiny n'est consommable QUE par un navigateur
+   qui fait tourner Shiny — tu ne peux pas l'attaquer en curl, ni la consommer
+   depuis Python. C'est un argument stratégique majeur pour la production :
+   ton backend reste réutilisable, tes données ne sont pas prisonnières d'un
+   seul client.
+:::
+
+## #4 Ce qu'on hérite gratuitement
+
+::: {.columns}
+::: {.column width="50%"}
+&#x2705; **Cache HTTP**, **CDN**, replicas
+
+&#x2705; **Scaling horizontal** (stateless oblige)
+
+&#x2705; **Monitoring** standard (codes HTTP, logs nginx, métriques)
+:::
+::: {.column width="50%"}
+&#x2705; **URLs adressables** (partage par mail)
+
+&#x2705; Déployable **partout** (Docker, VPS, k8s, serverless)
+
+&#x2705; **Debugging** via les DevTools du navigateur
+:::
+:::
+
+\
+
+::: {.fragment}
+&#x1F525;  **L'expérience du web**.
+:::
+
+::: notes
+Quand tu fais du web standard, tu hérites de l'infra que tout le monde a déjà
+mise au point.
+
+Cache HTTP : nginx, varnish, cloudflare — tu n'as rien à coder.
+CDN : tu sers tes assets depuis un CDN, R ne touche rien.
+URLs adressables : tu peux partager /report?year=2025 par mail, ça fonctionne.
+
+C'est invisible mais énorme. Avec Shiny, tu réinventes ces briques (ou tu t'en passes).
+:::
+
+# Côté code
+
+## Un slider
+
+::: {.columns}
+::: {.column width="50%"}
+**`htmxr`**
+
+```r
+hx_slider_input(
+  id      = "bins",
+  label   = "Number of bins:",
+  min     = 1,
+  max     = 50,
+  value   = 30,
+  get     = "/plot",
+  target  = "#plot",
+  trigger = "input changed delay:300ms"
+)
+```
+:::
+::: {.column width="50%"}
+**`Shiny`**
+
+```r
+sliderInput(
+  inputId = "bins",
+  label   = "Number of bins:",
+  min     = 1,
+  max     = 50,
+  value   = 30
+)
+```
+:::
+:::
+
+\
+
+
+&#x1F4A1; Mapping mental préservé : mêmes paramètres "standards" + 3 attributs pour câbler **la requête HTTP**.
+
+::: notes
+Les composants htmxr sont conçus pour ressembler à ceux de Shiny.
+
+La différence : tu déclares EXPLICITEMENT ce qui se passe quand l'utilisateur
+bouge le slider — quelle URL appeler, quoi remplacer dans le DOM, quand
+déclencher.
+
+C'est un peu plus verbeux, mais c'est aussi beaucoup plus prévisible :
+pas de magie réactive, tu vois la requête HTTP arriver dans tes logs.
+:::
+
+## La structure d'une app
+
+::: {.columns}
+::: {.column width="50%"}
+**`htmxr`** (`api.R`)
+
+```r
+#* @get /
+#* @serializer html
+function() {
+  hx_page(
+    hx_slider_input("bins", ..., get = "/plot"),
+    tags$div(id = "plot")
+  )
+}
+
+#* @get /plot
+#* @serializer none
+function(query) {
+  hist_svg(bins = as.integer(query$bins))
+}
+```
+:::
+::: {.column width="50%"}
+**`Shiny`** (`app.R`)
+
+```r
+ui <- fluidPage(
+  sliderInput("bins", ...),
+  plotOutput("plot")
+)
+
+server <- function(input, output) {
+  output$plot <- renderPlot({
+    hist(x, breaks = input$bins)
+  })
+}
+
+shinyApp(ui, server)
+```
+:::
+:::
+
+\
+
+&#x1F4A1; Deux types de routes : la **page** complète et les **fragments** HTML.
+
+
+::: notes
+La structure d'une app htmxr est différente : c'est un fichier api.R avec
+plusieurs routes plumber2.
+
+- La route racine GET / renvoie la page complète (hx_page + structure HTML)
+- Chaque route fragment renvoie un bout de HTML qui sera inséré dans le DOM
+
+Les annotations #* @get et #* @serializer viennent de plumber2.
+:::
+
+## Et `reactiveValues` ?
+
+::: {.columns}
+::: {.column width="50%"}
+**`htmxr`**
+
+```r
+# /viz?cut=...
+
+#* @get /viz
+function(query, datastore) {
+  datastore$session$cut <- query$cut
+  render_viz(query$cut)
+}
+```
+
+::: {.smaller}
+&#x1F36A; `datastore$session`
+
+&#x1F30D; `datastore$global`
+
+:::
+:::
+::: {.column width="50%"}
+**`Shiny`**
+
+```r
+r_global <- reactiveValues()
+
+# r_global$cut <- ...
+
+observeEvent(r_global$cut, {
+  update_viz(r_global$cut)
+})
+```
+:::
+:::
+
+\
+
+&#x1F4A1; Pas de blackboard réactif : chaque **concern** à sa place.
+
+::: notes
+Référence pour ceux qui connaissent : le pattern `rv <- reactiveValues()`
+partagé entre modules, lu via `observeEvent(rv$x, ...)`. Article ThinkR :
+https://rtask.thinkr.fr/fr/partager-des-donnees-entre-modules-shiny-un-update/
+
+Le problème : `reactiveValues` mélange trois choses dans un seul objet en
+mémoire — l'UI courante, ce que l'utilisateur a fait avant, et des résultats
+calculés. Tout vit dans une session R, disparaît à la fermeture de l'onglet,
+n'est pas partagé entre users, ne survit pas à un restart.
+
+hyperverse sépare ces concerns, chacun à sa place native sur le web :
+
+- **UI courante** (filtre actif, slider) dans l'URL : bookmarkable, partageable,
+  back-button OK, indexable.
+- **Préférence utilisateur** (qui doit survivre entre visites) dans
+  `datastore$session` (cookie + storr backend).
+- **État partagé entre tous les users** (compteur, leaderboard, cache) dans
+  `datastore$global`.
+
+Pas de blackboard réactif, pas de cascade d'invalidation, pas de signature de
+module qui doit propager `r`. Tout le détail dans le state management :
+hyperverse.world/state.
+:::
+
+## Tout n'existe pas (encore)
+
+::: {.fragment .fade-left}
+&#128679; Pas d'équivalent [`golem`](https://thinkr-open.github.io/golem/){target="_blank"} / [`rhino`](https://appsilon.github.io/rhino/){target="_blank"} pour structurer une grosse app.
+:::
+
+::: {.fragment .fade-left}
+&#128679; `htmxr.bootstrap` encore en dev (theming Sass instable).
+:::
+
+::: {.fragment .fade-left}
+&#128679; `glitchtipr` pas encore publié sur le CRAN.
+:::
+
+::: {.fragment .fade-left}
+&#128679; Pas encore de retour de prod massive : à éprouver.
+:::
+
+\
+
+::: {.fragment .fade-in}
+&#x1F525; **L'écosystème est jeune** &#x2192; appel à contributions ouvert.
+:::
+
+::: notes
+Honnêteté : tout n'est pas encore au niveau de Shiny + golem.
+
+Pour structurer une grosse app, chacun trouve aujourd'hui sa convention.
+Un équivalent golem/rhino pour htmxr reste à imaginer.
+
+htmxr.bootstrap a des bugs sur le theming Sass.
+glitchtipr n'est pas publié.
+
+Bref : c'est jeune, c'est ouvert, et si l'approche vous parle, c'est le bon moment
+pour contribuer.
+:::
+
+## À qui s'adresse `htmxr` ?
+
+::: {.columns}
+::: {.column width="50%"}
+**`htmxr` brille pour** &#x2705;
+
+- Apps **publiques** avec beaucoup d'utilisateurs
+- Apps avec **contraintes de rapidité** (même en interne)
+- **Budgets serrés** (~12× moins cher en infra)
+- Endpoints **réutilisables** : web, mobile, autres services
+- Devs R à l'aise avec HTTP, ou curieux du web
+:::
+::: {.column width="50%"}
+**`Shiny` reste le bon choix pour** &#x2705;
+
+- Dashboards internes, petite audience
+- Apps qui dépendent de DT, plotly, bslib...
+- Réactivité fine-grained nécessaire
+- Stack en place, deadline serrée
+:::
+:::
+
+\
+
+::: {.fragment}
+&#x1F525; Deux outils, pas un duel.
+:::
+
+::: notes
+Slide de positionnement à dire calmement, ton non-belliqueux.
+
+À gauche : le terrain de jeu de htmxr. Public large, mise en production,
+interop. Tu veux pouvoir hitter ton endpoint en curl, depuis Python, depuis
+ton app mobile. Tu as plus d'utilisateurs que de cœurs CPU disponibles.
+
+À droite : Shiny reste pertinent. Les 20 personnes du marketing qui ouvrent
+un dashboard une fois par jour, c'est nickel pour Shiny. Si tu utilises
+DT/plotly intensivement, l'écosystème te porte. Réactivité fine-grained
+(cascades d'invalidation), Shiny est dur à battre.
+
+Punchline : "Deux outils, pas un duel." Important de fermer sur ce ton. Tu
+proposes une alternative, pas un remplacement.
+:::
+
+## hyperverse {.center}
+
+::: {.columns}
+::: {.column width="60%"}
+&#x1F4D6; **Doc** &#x2192; &#x1F517; [hyperverse.world](https://hyperverse.world){target="_blank"}
+
+\
+
+&#x1F680; **Démo live** &#x2192; &#x1F517; [hello.demo.hyperverse.world](https://hello.demo.hyperverse.world/){target="_blank"}
+
+\
+
+&#x1F4BB; **GitHub** &#x2192; &#x1F517; [github.com/hyperverse-r](https://github.com/hyperverse-r){target="_blank"}
+:::
+::: {.column width="40%"}
+<h1 style="margin: 0;">Merci !</h1>
+:::
+:::
