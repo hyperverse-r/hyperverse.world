@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hyperverse.world/talks/mini-meetup-thinkr-mai-2026/index.html</loc>
-    <lastmod>2026-05-29T11:31:22.192Z</lastmod>
-  </url>
-  <url>
     <loc>https://hyperverse.world/why.html</loc>
-    <lastmod>2026-05-29T11:31:22.192Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hyperverse.world/getting-started.html</loc>
-    <lastmod>2026-05-29T11:31:22.186Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hyperverse.world/docs.html</loc>
-    <lastmod>2026-05-29T11:31:22.186Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hyperverse.world/ecosystem.html</loc>
-    <lastmod>2026-05-29T11:31:22.186Z</lastmod>
+    <lastmod>2026-06-12T13:46:11.414Z</lastmod>
   </url>
   <url>
     <loc>https://hyperverse.world/glitchtipr.html</loc>
-    <lastmod>2026-05-29T11:31:22.186Z</lastmod>
+    <lastmod>2026-06-12T13:46:11.404Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hyperverse.world/ecosystem.html</loc>
+    <lastmod>2026-06-12T13:46:11.404Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hyperverse.world/docs.html</loc>
+    <lastmod>2026-06-12T13:46:11.404Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hyperverse.world/talks/rencontres-r-2026/index.html</loc>
+    <lastmod>2026-06-12T13:46:11.414Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hyperverse.world/talks/mini-meetup-thinkr-mai-2026/index.html</loc>
+    <lastmod>2026-06-12T13:46:11.409Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hyperverse.world/getting-started.html</loc>
+    <lastmod>2026-06-12T13:46:11.404Z</lastmod>
   </url>
   <url>
     <loc>https://hyperverse.world/talks.html</loc>
-    <lastmod>2026-05-29T11:31:22.186Z</lastmod>
+    <lastmod>2026-06-12T13:46:11.404Z</lastmod>
   </url>
   <url>
     <loc>https://hyperverse.world/index.html</loc>
-    <lastmod>2026-05-29T11:31:22.186Z</lastmod>
+    <lastmod>2026-06-12T13:46:11.404Z</lastmod>
   </url>
 </urlset>

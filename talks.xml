@@ -10,7 +10,21 @@
 <atom:link href="https://hyperverse.world/talks.xml" rel="self" type="application/rss+xml"/>
 <description>Slides from meetups and conferences about the hyperverse ecosystem.</description>
 <generator>quarto-1.9.38</generator>
-<lastBuildDate>Fri, 29 May 2026 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 17 Jun 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <dc:creator>Arthur Bréant</dc:creator>
+  <link>https://hyperverse.world/talks/rencontres-r-2026/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>htmxr</category>
+  <category>plumber2</category>
+  <category>shiny</category>
+  <category>http</category>
+  <category>production</category>
+  <guid>https://hyperverse.world/talks/rencontres-r-2026/</guid>
+  <pubDate>Wed, 17 Jun 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://hyperverse.world/talks/rencontres-r-2026/img/intro_htmxr_hello.png" medium="image" type="image/png" height="200" width="144"/>
+</item>
 <item>
   <title></title>
   <dc:creator>Arthur Bréant</dc:creator>

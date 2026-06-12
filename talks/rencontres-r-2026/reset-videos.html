@@ -1,0 +1,46 @@
+<script>
+// Reset & restart videos when their slide becomes the current one.
+// Pause videos on inactive slides so they don't drift out of sync.
+(function () {
+  function init() {
+    if (typeof Reveal === 'undefined') {
+      // Reveal not ready yet — try again
+      window.requestAnimationFrame(init);
+      return;
+    }
+
+    function resetSlideVideos(slide) {
+      if (!slide) return;
+      slide.querySelectorAll('video').forEach(function (v) {
+        try {
+          v.pause();
+          v.currentTime = 0;
+          // Re-trigger autoplay
+          var p = v.play();
+          if (p && typeof p.catch === 'function') p.catch(function () {});
+        } catch (e) {}
+      });
+    }
+
+    function pauseOtherVideos(currentSlide) {
+      document.querySelectorAll('.reveal section video').forEach(function (v) {
+        if (!currentSlide || !currentSlide.contains(v)) {
+          try { v.pause(); } catch (e) {}
+        }
+      });
+    }
+
+    Reveal.on('ready', function (event) {
+      pauseOtherVideos(event.currentSlide);
+      resetSlideVideos(event.currentSlide);
+    });
+
+    Reveal.on('slidechanged', function (event) {
+      pauseOtherVideos(event.currentSlide);
+      resetSlideVideos(event.currentSlide);
+    });
+  }
+
+  init();
+})();
+</script>
