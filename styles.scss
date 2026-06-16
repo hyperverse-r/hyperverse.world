@@ -285,6 +285,19 @@ code {
   margin-bottom: 0.75rem;
 }
 
+.listing-arrow {
+  display: inline-block;
+  margin-left: 0.4em;
+  font-size: 0.75em;
+  color: #888;
+  transition: transform 0.15s, color 0.15s;
+}
+
+.quarto-post .listing-title a:hover .listing-arrow {
+  color: #ffffff;
+  transform: translate(2px, -2px);
+}
+
 .listing-categories {
   margin-top: 0.5rem;
   margin-bottom: 1rem;

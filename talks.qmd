@@ -3,7 +3,8 @@ title: "Talks"
 description: "Slides from meetups and conferences about the hyperverse ecosystem."
 listing:
   contents: talks
-  type: default
+  type: custom
+  template: _talks-listing-item.ejs.md
   fields: [date, title, event, description, categories]
   sort: "date desc"
   sort-ui: false
