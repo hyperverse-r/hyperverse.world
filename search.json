@@ -298,7 +298,7 @@
     "href": "talks/rencontres-r-2026/index.html#tout-nexiste-pas-encore",
     "title": "Hyperverse",
     "section": "Tout n’existe pas (encore)",
-    "text": "Tout n’existe pas (encore)\n\n🚧 Pas d’équivalent golem / rhino pour structurer une grosse app.\n\n\n🚧 htmxr.bootstrap encore en dev (theming Sass instable).\n\n\n🚧 glitchtipr pas encore publié sur le CRAN.\n\n\n🚧 Pas encore de retour de prod massive : à éprouver.\n\n\n\n\n🔥 L’écosystème est jeune → appel à contributions ouvert.\n\n\nHonnêteté : tout n’est pas encore au niveau de Shiny + golem.\nPour structurer une grosse app, chacun trouve aujourd’hui sa convention. Un équivalent golem/rhino pour htmxr reste à imaginer.\nhtmxr.bootstrap a des bugs sur le theming Sass. glitchtipr n’est pas publié.\nBref : c’est jeune, c’est ouvert, et si l’approche vous parle, c’est le bon moment pour contribuer."
+    "text": "Tout n’existe pas (encore)\n\n🚧 Pas d’équivalent golem / rhino pour structurer une grosse app.\n\n\n🚧 htmxr.bootstrap encore en dev (theming Sass instable).\n\n\n🚧 glitchtipr / alpiner pas encore publié sur le CRAN.\n\n\n🚧 Pas encore de retour de prod massive : à éprouver.\n\n\n\n\n🔥 L’écosystème est jeune → appel à contributions ouvert.\n\n\nHonnêteté : tout n’est pas encore au niveau de Shiny + golem.\nPour structurer une grosse app, chacun trouve aujourd’hui sa convention. Un équivalent golem/rhino pour htmxr reste à imaginer.\nhtmxr.bootstrap a des bugs sur le theming Sass. glitchtipr n’est pas publié.\nBref : c’est jeune, c’est ouvert, et si l’approche vous parle, c’est le bon moment pour contribuer."
   },
   {
     "objectID": "talks/rencontres-r-2026/index.html#à-qui-sadresse-htmxr",
