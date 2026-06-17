@@ -858,7 +858,7 @@ hyperverse.world/state.
 :::
 
 ::: {.fragment .fade-left}
-&#128679; `glitchtipr` pas encore publié sur le CRAN.
+&#128679; `glitchtipr` / `alpiner` pas encore publié sur le CRAN.
 :::
 
 ::: {.fragment .fade-left}
