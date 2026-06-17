@@ -47,8 +47,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2db792f0b39f26f461a8d0d4b1540ccd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-41f0ba5439a613a50350971440b37cd6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-82da684fd41292137b400b650314e52f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-cea7c7f55e0c00a83bbb8dd1fa80bd54.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-67ac97b3a7f375e2de962da92c7c7a0b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -86,9 +86,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-event','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-event','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-engines","listing-language","listing-title","listing-subtitle","listing-author","listing-date","listing-event","listing-description","listing-categories","listing-image","listing-include-after-body","listing-resources","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -397,13 +397,17 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="aHRteHIlMkNwbHVtYmVyMiUyQ3NoaW55JTJDaHR0cCUyQ3Byb2R1Y3Rpb24=" data-listing-date-sort="1781654400000" data-listing-file-modified-sort="1781272614406" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3244">
+
+<div class="quarto-post image-right" data-index="0" data-categories="aHRteHIlMkNwbHVtYmVyMiUyQ3NoaW55JTJDaHR0cCUyQ3Byb2R1Y3Rpb24=" data-listing-date-sort="1781654400000" data-listing-file-modified-sort="1781654495112" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3244">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./talks/rencontres-r-2026/index.html" class="no-external">Hyperverse</a>
+<a href="./talks/rencontres-r-2026/index.html" class="no-external">
+Rencontres R 2026 à Nantes<span class="listing-arrow" aria-hidden="true">↗</span>
+</a>
 </h3>
+
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('aHRteHI='); return false;">htmxr</div>
@@ -417,26 +421,27 @@ window.Quarto = {
 <div class="listing-category" onclick="window.quartoListingCategory('cHJvZHVjdGlvbg=='); return false;">production</div>
 
 </div>
-<div class="delink listing-description"><a href="./talks/rencontres-r-2026/index.html" class="no-external">
-<p>Découverte de l’écosystème hyperverse — htmxr, plumber2, alpiner, glitchtipr — présentée dans la session « Production ».</p>
-</a></div>
+
+<div class="delink listing-description"><a href="./talks/rencontres-r-2026/index.html" class="no-external">Découverte de l'écosystème hyperverse : htmxr, plumber2, alpiner, glitchtipr. Présentée dans la session « Production ».</a></div>
+
 </div>
 <div class="metadata">
 <a href="./talks/rencontres-r-2026/index.html" class="no-external">
-<div class="listing-date">
-June 17, 2026
-</div>
-<div class="metadata-value listing-event">
-Rencontres R 2026 — Nantes
-</div>
+
+<div class="listing-date">June 17, 2026</div>
+
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="aHRteHIlMkNhbHBpbmVyJTJDZ2xpdGNodGlwciUyQ3NoaW55" data-listing-date-sort="1780012800000" data-listing-file-modified-sort="1781272614401" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="24" data-listing-word-count-sort="4678">
+
+<div class="quarto-post image-right" data-index="1" data-categories="aHRteHIlMkNhbHBpbmVyJTJDZ2xpdGNodGlwciUyQ3NoaW55" data-listing-date-sort="1780012800000" data-listing-file-modified-sort="1781654495107" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="24" data-listing-word-count-sort="4678">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./talks/mini-meetup-thinkr-mai-2026/index.html" class="no-external">Hyperverse</a>
+<a href="./talks/mini-meetup-thinkr-mai-2026/index.html" class="no-external">
+Mini-meetup interne ThinkR<span class="listing-arrow" aria-hidden="true">↗</span>
+</a>
 </h3>
+
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('aHRteHI='); return false;">htmxr</div>
@@ -448,21 +453,19 @@ Rencontres R 2026 — Nantes
 <div class="listing-category" onclick="window.quartoListingCategory('c2hpbnk='); return false;">shiny</div>
 
 </div>
-<div class="delink listing-description"><a href="./talks/mini-meetup-thinkr-mai-2026/index.html" class="no-external">
-<p>Présentation de l’écosystème hyperverse — htmxr, alpiner, glitchtipr — et de l’approche “web standard” pour faire des apps R.</p>
-</a></div>
+
+<div class="delink listing-description"><a href="./talks/mini-meetup-thinkr-mai-2026/index.html" class="no-external">Présentation de l'écosystème hyperverse — htmxr, alpiner, glitchtipr — et de l'approche "web standard" pour faire des apps R.</a></div>
+
 </div>
 <div class="metadata">
 <a href="./talks/mini-meetup-thinkr-mai-2026/index.html" class="no-external">
-<div class="listing-date">
-May 29, 2026
-</div>
-<div class="metadata-value listing-event">
-Mini-meetup interne ThinkR
-</div>
+
+<div class="listing-date">May 29, 2026</div>
+
 </a>
 </div>
 </div>
+
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->
