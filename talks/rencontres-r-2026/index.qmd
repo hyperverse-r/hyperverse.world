@@ -4,8 +4,11 @@ subtitle: "Faire du web depuis R, le web comme il a été conçu."
 author: "Arthur Bréant"
 date: 2026-06-17
 event: "Rencontres R 2026 à Nantes"
+event-en: "Rencontres R 2026 in Nantes, France"
 description: "Découverte de l'écosystème hyperverse : htmxr, plumber2, alpiner, glitchtipr. Présentée dans la session « Production »."
+description-en: "Introduction to the hyperverse ecosystem: htmxr, plumber2, alpiner, glitchtipr. Presented in the « Production » session."
 categories: [htmxr, plumber2, shiny, http, production]
+langs: [fr, en]
 image: img/intro_htmxr_hello.png
 format:
   revealjs:

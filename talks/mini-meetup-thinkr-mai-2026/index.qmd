@@ -6,6 +6,7 @@ date: 2026-05-29
 event: "Mini-meetup interne ThinkR"
 description: "Présentation de l'écosystème hyperverse — htmxr, alpiner, glitchtipr — et de l'approche \"web standard\" pour faire des apps R."
 categories: [htmxr, alpiner, glitchtipr, shiny]
+langs: [fr]
 image: img/intro_htmxr_hello.png
 ---
 

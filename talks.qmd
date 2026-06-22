@@ -5,7 +5,7 @@ listing:
   contents: talks/*/index.qmd
   type: custom
   template: _talks-listing-item.ejs.md
-  fields: [date, title, event, description, categories]
+  fields: [date, title, event, description, langs]
   sort: "date desc"
   sort-ui: false
   filter-ui: false
