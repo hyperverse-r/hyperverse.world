@@ -7,10 +7,16 @@ event: "Rencontres R 2026 à Nantes"
 description: "Découverte de l'écosystème hyperverse : htmxr, plumber2, alpiner, glitchtipr. Présentée dans la session « Production »."
 categories: [htmxr, plumber2, shiny, http, production]
 image: img/intro_htmxr_hello.png
-include-after-body: reset-videos.html
+format:
+  revealjs:
+    slide-number: false
+include-after-body:
+  - reset-videos.html
+  - lang-switch.html
 resources:
   - img/*.webm
   - reset-videos.html
+  - lang-switch.html
 ---
 
 # Prologue

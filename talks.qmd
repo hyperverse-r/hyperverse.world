@@ -2,7 +2,7 @@
 title: "Talks"
 description: "Slides from meetups and conferences about the hyperverse ecosystem."
 listing:
-  contents: talks
+  contents: talks/*/index.qmd
   type: custom
   template: _talks-listing-item.ejs.md
   fields: [date, title, event, description, categories]
