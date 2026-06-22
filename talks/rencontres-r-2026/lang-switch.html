@@ -1,0 +1,74 @@
+<style>
+  .lang-switch {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    z-index: 9999;
+    font-family: 'Lato', system-ui, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .lang-switch a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.32rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(35, 35, 35, 0.72);
+    color: #f0f0f0;
+    text-decoration: none;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .lang-switch a:hover {
+    background: rgba(35, 35, 35, 0.95);
+    transform: translateY(-1px);
+  }
+
+  /* Hide in print mode and PDF export */
+  @media print {
+    .lang-switch { display: none; }
+  }
+</style>
+
+<script>
+(function () {
+  function init() {
+    var path = window.location.pathname;
+    var isEn = /index-en(\.html)?$/.test(path) || /index-en\/?$/.test(path);
+
+    var target, label;
+    if (isEn) {
+      target = path.replace(/index-en(\.html)?$/, 'index.html').replace(/index-en\/?$/, '');
+      label = '🇫🇷 FR';
+    } else {
+      if (/\/$/.test(path) || /index\.html$/.test(path) || path === '') {
+        target = path.replace(/index\.html$/, '') + 'index-en.html';
+      } else {
+        target = path + '/index-en.html';
+      }
+      label = '🇬🇧 EN';
+    }
+
+    var div = document.createElement('div');
+    div.className = 'lang-switch';
+    var a = document.createElement('a');
+    a.href = target;
+    a.textContent = label;
+    a.setAttribute('aria-label', isEn ? 'Switch to French' : 'Basculer en anglais');
+    div.appendChild(a);
+    document.body.appendChild(div);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
