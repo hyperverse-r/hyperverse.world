@@ -159,11 +159,13 @@ function() {
 Launch with:
 
 ```r
-pr <- plumber2::api("api.R") |>
-  hx_serve_assets()
-
-pr$ignite(port = 8080)
+plumber2::api("api.R") |>
+  hx_serve_assets() |>
+  plumber2::api_run(port = 8080)
 ```
+
+Note that `ignite()` takes no `port` argument — pass the port to `api()` or to
+`api_run()`, otherwise the server silently binds to the default 8080.
 
 ---
 
